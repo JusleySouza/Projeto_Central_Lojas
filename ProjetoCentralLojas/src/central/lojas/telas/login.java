@@ -1,3 +1,4 @@
+package central.lojas.telas;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -25,7 +26,7 @@ public class login {
 	private JFrame interFace;
 	private JPasswordField passwordField;
 	private JTextField textField;
-	private Cadastro cad;
+	private CadastroCliente cad;
 	private Caixa cax;
 
 	/**
@@ -48,7 +49,7 @@ public class login {
 	 * Create the application.
 	 */
 	public login() {
-		cad = new Cadastro();
+		cad = new CadastroCliente();
 		cax = new Caixa();
 		initialize();
 	}

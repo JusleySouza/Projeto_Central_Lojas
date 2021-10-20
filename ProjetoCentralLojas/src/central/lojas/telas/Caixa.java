@@ -31,7 +31,7 @@ public class Caixa extends JFrame {
 	private JTextField todP;
 	private JTextField dinC;
 	private JTextField troco;
-	private Cadastro cad;
+	private CadastroCliente cad;
 	/**
 	 * Launch the application.
 	 */
@@ -53,7 +53,7 @@ public class Caixa extends JFrame {
 	 */
 	public Caixa() {
 		
-		cad = new Cadastro();
+		cad = new CadastroCliente();
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setTitle("Caixa");

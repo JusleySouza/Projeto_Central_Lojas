@@ -1,3 +1,5 @@
+package central.lojas.telas;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -9,8 +11,15 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class Cadastro extends JFrame {
+public class CadastroCliente extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField nome;
@@ -23,9 +32,13 @@ public class Cadastro extends JFrame {
 	private JTextField cpf;
 	private JTextField RG;
 	private JTextField email;
-
 	
-	public Cadastro() {
+	
+	
+	public CadastroCliente() {
+		
+		
+		
 		setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
 		setTitle("Clientes");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -166,11 +179,31 @@ public class Cadastro extends JFrame {
 		contentPane.add(cadastrar);
 		
 		JButton limpar = new JButton("Limpar");
+		limpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nome.setText("");
+				telefone.setText("");
+				rua.setText("");
+				telsecund.setText("");
+				cidade.setText("");
+				RG.setText("");
+				cpf.setText("");
+				email.setText("");
+				bairro.setText("");
+				numeroC.setText("");
+				
+			}
+		});
 		limpar.setFont(new Font("Serif", Font.BOLD, 14));
 		limpar.setBounds(259, 486, 155, 48);
 		contentPane.add(limpar);
 		
 		JButton sair = new JButton("Sair");
+		sair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(DISPOSE_ON_CLOSE);
+			}
+		});
 		sair.setFont(new Font("Serif", Font.BOLD, 14));
 		sair.setBounds(506, 486, 155, 48);
 		contentPane.add(sair);
