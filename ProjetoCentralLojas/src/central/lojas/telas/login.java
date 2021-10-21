@@ -9,14 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.CardLayout;
-import java.awt.FlowLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,7 +19,7 @@ public class login {
 	private JFrame interFace;
 	private JPasswordField passwordField;
 	private JTextField textField;
-	private CadastroCliente cad;
+	private Cadastro cad;
 	private Caixa cax;
 
 	/**
@@ -49,7 +42,7 @@ public class login {
 	 * Create the application.
 	 */
 	public login() {
-		cad = new CadastroCliente();
+		cad = new Cadastro();
 		cax = new Caixa();
 		initialize();
 	}

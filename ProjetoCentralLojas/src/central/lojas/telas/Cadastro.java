@@ -14,6 +14,10 @@ import javax.swing.JButton;
 
 public class Cadastro extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField rua;
