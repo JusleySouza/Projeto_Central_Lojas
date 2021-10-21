@@ -32,6 +32,7 @@ public class Caixa extends JFrame {
 	private JTextField dinC;
 	private JTextField troco;
 	private CadastroCliente cad;
+	private logincliente logcli;
 	/**
 	 * Launch the application.
 	 */
@@ -52,7 +53,7 @@ public class Caixa extends JFrame {
 	 * Create the frame.
 	 */
 	public Caixa() {
-		
+		logcli = new logincliente();
 		cad = new CadastroCliente();
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
@@ -73,6 +74,15 @@ public class Caixa extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem1 = new JMenuItem("Login Cliente");
+		mntmNewMenuItem1.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				logcli.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem1);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -153,7 +163,6 @@ public class Caixa extends JFrame {
 				
 				soma = Double.parseDouble(val) + multiplicacao;
 				todP.setText(String.valueOf(soma));
-				
 				
 				
 				

@@ -53,7 +53,7 @@ public class login {
 	private void initialize() {
 		interFace = new JFrame();
 		interFace.setFont(new Font("Century Gothic", Font.PLAIN, 12));
-		interFace.setTitle("Seja bem vindo ao sistema");
+		interFace.setTitle("Login Funcionário");
 		interFace.setBounds(100, 100, 450, 228);
 		interFace.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		interFace.getContentPane().setLayout(new BorderLayout(0, 0));
