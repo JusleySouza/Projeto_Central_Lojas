@@ -33,6 +33,7 @@ public class Caixa extends JFrame {
 	private JTextField troco;
 	private CadastroCliente cad;
 	private logincliente logcli;
+	private mercadoriaadd additm;
 	/**
 	 * Launch the application.
 	 */
@@ -55,6 +56,7 @@ public class Caixa extends JFrame {
 	public Caixa() {
 		logcli = new logincliente();
 		cad = new CadastroCliente();
+		additm = new mercadoriaadd();
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setTitle("Caixa");
@@ -82,6 +84,19 @@ public class Caixa extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem1);
+		
+		
+		
+		JMenu mnNewMenu1 = new JMenu("Adicionar / Editar");
+		menuBar.add(mnNewMenu1);
+		
+		JMenuItem mntmNewMenuItem2 = new JMenuItem("Adicionar Item");
+		mntmNewMenuItem2.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				additm.setVisible(true);
+			}
+		});
+		mnNewMenu1.add(mntmNewMenuItem2);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
