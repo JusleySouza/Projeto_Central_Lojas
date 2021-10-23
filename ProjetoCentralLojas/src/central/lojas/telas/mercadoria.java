@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.EmptyBorder;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public class mercadoriaadd extends JFrame {
+public class mercadoria extends JFrame {
 
 	/**
 	 * 
@@ -37,7 +37,7 @@ public class mercadoriaadd extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					mercadoriaadd frame = new mercadoriaadd();
+					mercadoria frame = new mercadoria();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,7 +55,7 @@ public class mercadoriaadd extends JFrame {
 	public String prc;
 	public String tmh;
 	
-	public mercadoriaadd() {
+	public mercadoria() {
 		
 		
 		

@@ -73,7 +73,7 @@ public class logincliente extends JFrame {
 		btnNewButton_1.setBounds(310, 79, 89, 23);
 		contentPane.add(btnNewButton_1);
 		
-		JLabel lblNewLabel = new JLabel("Usuário");
+		JLabel lblNewLabel = new JLabel("Usu\u00E1rio");
 		lblNewLabel.setBounds(70, 37, 59, 14);
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Century Schoolbook", Font.BOLD, 13));
@@ -93,7 +93,7 @@ public class logincliente extends JFrame {
 		panel.setBounds(0, 0, 434, 22);
 		contentPane.add(panel);
 		
-		JLabel lblNewLabel_2 = new JLabel("Informe seu usuário e senha para entrar");
+		JLabel lblNewLabel_2 = new JLabel("Informe seu usuario e senha para entrar");
 		panel.add(lblNewLabel_2);
 		
 		passwordField_1 = new JPasswordField();

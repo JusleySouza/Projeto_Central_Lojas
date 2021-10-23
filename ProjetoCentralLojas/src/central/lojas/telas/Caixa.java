@@ -1,27 +1,25 @@
 package central.lojas.telas;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JLabel;
-import java.awt.GridLayout;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import java.awt.Dialog.ModalExclusionType;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 public class Caixa extends JFrame {
 
@@ -32,8 +30,8 @@ public class Caixa extends JFrame {
 	private JTextField dinC;
 	private JTextField troco;
 	private CadastroCliente cad;
-	//private logincliente logcli;
-	private mercadoriaadd additm;
+	private logincliente logcli;
+	private mercadoria additm;
 	/**
 	 * Launch the application.
 	 */
@@ -54,9 +52,9 @@ public class Caixa extends JFrame {
 	 * Create the frame.
 	 */
 	public Caixa() {
-		//logcli = new logincliente();
+		logcli = new logincliente();
 		cad = new CadastroCliente();
-		additm = new mercadoriaadd();
+		additm = new mercadoria();
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setTitle("Caixa");
@@ -80,7 +78,7 @@ public class Caixa extends JFrame {
 		JMenuItem mntmNewMenuItem1 = new JMenuItem("Login Cliente");
 		mntmNewMenuItem1.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				//logcli.setVisible(true);
+				logcli.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem1);
