@@ -32,7 +32,7 @@ public class Caixa extends JFrame {
 	private JTextField dinC;
 	private JTextField troco;
 	private CadastroCliente cad;
-	private logincliente logcli;
+	//private logincliente logcli;
 	private mercadoriaadd additm;
 	/**
 	 * Launch the application.
@@ -54,7 +54,7 @@ public class Caixa extends JFrame {
 	 * Create the frame.
 	 */
 	public Caixa() {
-		logcli = new logincliente();
+		//logcli = new logincliente();
 		cad = new CadastroCliente();
 		additm = new mercadoriaadd();
 		setAutoRequestFocus(false);
@@ -80,7 +80,7 @@ public class Caixa extends JFrame {
 		JMenuItem mntmNewMenuItem1 = new JMenuItem("Login Cliente");
 		mntmNewMenuItem1.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				logcli.setVisible(true);
+				//logcli.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem1);

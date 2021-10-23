@@ -82,16 +82,16 @@ public class mercadoriaadd extends JFrame {
 		lblNewLabel_1.setFont(new Font("Century Schoolbook", Font.BOLD, 13));
 		
 		textField = new JTextField();
-		textField.setBounds(90, 34, 86, 20);
+		textField.setBounds(90, 34, 169, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Quantidade Disponível");
+		JLabel lblNewLabel_3 = new JLabel("Quantidade Disponivel");
 		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblNewLabel_3.setBounds(22, 128, 154, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Preço");
+		JLabel lblNewLabel_4 = new JLabel("Pre\u00E7o");
 		lblNewLabel_4.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblNewLabel_4.setBounds(22, 169, 59, 14);
 		contentPane.add(lblNewLabel_4);
@@ -103,12 +103,12 @@ public class mercadoriaadd extends JFrame {
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(90, 80, 86, 20);
+		textField_1.setBounds(90, 80, 169, 20);
 		contentPane.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(186, 126, 86, 20);
+		textField_2.setBounds(186, 126, 73, 20);
 		contentPane.add(textField_2);
 		
 		textField_3 = new JTextField();
