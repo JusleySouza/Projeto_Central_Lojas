@@ -110,9 +110,9 @@ public class Caixa extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Código da Roupa");
+		JLabel lblNewLabel = new JLabel("C\u00F3digo da Roupa");
 		lblNewLabel.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel.setBounds(26, 30, 103, 14);
+		lblNewLabel.setBounds(26, 30, 140, 20);
 		panel.add(lblNewLabel);
 		
 		valorR = new JTextField();
@@ -131,9 +131,9 @@ public class Caixa extends JFrame {
 		panel.add(valorR);
 		valorR.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Quantidade de Roupas");
+		JLabel lblNewLabel_1 = new JLabel("Quantidade de pe\u00E7as");
 		lblNewLabel_1.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(26, 94, 151, 14);
+		lblNewLabel_1.setBounds(26, 94, 151, 20);
 		panel.add(lblNewLabel_1);
 		
 		quantidade = new JTextField();
@@ -153,7 +153,7 @@ public class Caixa extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("Total a Pagar");
 		lblNewLabel_2.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_2.setBounds(373, 29, 94, 14);
+		lblNewLabel_2.setBounds(373, 29, 140, 20);
 		panel.add(lblNewLabel_2);
 		
 		todP = new JTextField();
