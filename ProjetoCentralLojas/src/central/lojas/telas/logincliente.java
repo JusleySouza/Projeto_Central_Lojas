@@ -93,7 +93,7 @@ public class logincliente extends JFrame {
 		panel.setBounds(0, 0, 434, 22);
 		contentPane.add(panel);
 		
-		JLabel lblNewLabel_2 = new JLabel("Informe seu usuario e senha para entrar");
+		JLabel lblNewLabel_2 = new JLabel("Informe o usuario e senha para entrar");
 		panel.add(lblNewLabel_2);
 		
 		passwordField_1 = new JPasswordField();
