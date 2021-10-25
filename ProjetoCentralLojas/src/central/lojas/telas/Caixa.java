@@ -1,28 +1,32 @@
 package central.lojas.telas;
 
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-
 public class Caixa extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField valorR;
 	private JTextField quantidade;
@@ -106,7 +110,7 @@ public class Caixa extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Valor da Roupa");
+		JLabel lblNewLabel = new JLabel("Código da Roupa");
 		lblNewLabel.setFont(new Font("Serif", Font.BOLD, 14));
 		lblNewLabel.setBounds(26, 30, 103, 14);
 		panel.add(lblNewLabel);
@@ -159,7 +163,7 @@ public class Caixa extends JFrame {
 		panel.add(todP);
 		todP.setColumns(10);
 		
-		JButton Calcular = new JButton("Calcular");
+		JButton Calcular = new JButton("Calcular Total");
 		Calcular.setFont(new Font("Serif", Font.BOLD, 14));
 		Calcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -195,7 +199,7 @@ public class Caixa extends JFrame {
 		limpar.setBounds(262, 357, 144, 52);
 		panel.add(limpar);
 		
-		JButton limparT = new JButton("Limpar Tudo");
+		JButton limparT = new JButton("Fechar venda");
 		limparT.setFont(new Font("Serif", Font.BOLD, 14));
 		limparT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -210,9 +214,9 @@ public class Caixa extends JFrame {
 		limparT.setBounds(515, 357, 140, 52);
 		panel.add(limparT);
 		
-		JLabel lblNewLabel_3 = new JLabel("Dinheiro do Cliente");
+		JLabel lblNewLabel_3 = new JLabel("Valor Recebido");
 		lblNewLabel_3.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(26, 173, 151, 14);
+		lblNewLabel_3.setBounds(373, 94, 151, 14);
 		panel.add(lblNewLabel_3);
 		
 		dinC = new JTextField();
@@ -226,7 +230,7 @@ public class Caixa extends JFrame {
 			}
 		});
 		dinC.setText("0");
-		dinC.setBounds(26, 198, 140, 20);
+		dinC.setBounds(373, 119, 140, 20);
 		panel.add(dinC);
 		dinC.setColumns(10);
 		
@@ -257,7 +261,7 @@ public class Caixa extends JFrame {
 				troco.setText(String.valueOf(subtracao));
 			}
 		});
-		btnNewButton.setBounds(523, 197, 151, 23);
+		btnNewButton.setBounds(26, 195, 151, 23);
 		panel.add(btnNewButton);
 	}
 }
