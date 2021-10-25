@@ -163,7 +163,7 @@ public class Caixa extends JFrame {
 		panel.add(todP);
 		todP.setColumns(10);
 		
-		JButton Calcular = new JButton("Calcular Total");
+		JButton Calcular = new JButton("Adicionar Item");
 		Calcular.setFont(new Font("Serif", Font.BOLD, 14));
 		Calcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -181,11 +181,12 @@ public class Caixa extends JFrame {
 				soma = Double.parseDouble(val) + multiplicacao;
 				todP.setText(String.valueOf(soma));
 				
-				
+				quantidade.setText("");
+				valorR.setText("");
 				
 			}
 		});
-		Calcular.setBounds(26, 357, 144, 52);
+		Calcular.setBounds(26, 172, 144, 52);
 		panel.add(Calcular);
 		
 		JButton limpar = new JButton("Limpar");
@@ -196,7 +197,7 @@ public class Caixa extends JFrame {
 				valorR.setText("");
 			}
 		});
-		limpar.setBounds(262, 357, 144, 52);
+		limpar.setBounds(26, 357, 144, 52);
 		panel.add(limpar);
 		
 		JButton limparT = new JButton("Fechar venda");
@@ -211,7 +212,7 @@ public class Caixa extends JFrame {
 				
 			}
 		});
-		limparT.setBounds(515, 357, 140, 52);
+		limparT.setBounds(197, 357, 140, 52);
 		panel.add(limparT);
 		
 		JLabel lblNewLabel_3 = new JLabel("Valor Recebido");
@@ -261,7 +262,7 @@ public class Caixa extends JFrame {
 				troco.setText(String.valueOf(subtracao));
 			}
 		});
-		btnNewButton.setBounds(26, 195, 151, 23);
+		btnNewButton.setBounds(373, 247, 140, 23);
 		panel.add(btnNewButton);
 	}
 }
