@@ -63,7 +63,7 @@ public class login {
 		panel.setBackground(Color.ORANGE);
 		interFace.getContentPane().add(panel, BorderLayout.NORTH);
 		
-		JLabel lblNewLabel = new JLabel("Informe seu usu\u00E1rio e senha para entrar");
+		JLabel lblNewLabel = new JLabel("Informe seu usuario e senha para entrar");
 		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
@@ -79,7 +79,7 @@ public class login {
 		panel_3.add(panel_4);
 		panel_4.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JLabel log1 = new JLabel("Usu\u00E1rio");
+		JLabel log1 = new JLabel("Usuario");
 		log1.setFont(new Font("Century Schoolbook", Font.BOLD, 13));
 		panel_4.add(log1);
 		

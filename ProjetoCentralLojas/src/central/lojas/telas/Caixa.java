@@ -110,7 +110,7 @@ public class Caixa extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("C\u00F3digo da Roupa");
+		JLabel lblNewLabel = new JLabel("Codigo da Roupa");
 		lblNewLabel.setFont(new Font("Serif", Font.BOLD, 14));
 		lblNewLabel.setBounds(26, 30, 140, 20);
 		panel.add(lblNewLabel);

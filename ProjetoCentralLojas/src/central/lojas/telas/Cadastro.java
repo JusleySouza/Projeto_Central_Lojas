@@ -48,7 +48,7 @@ public class Cadastro extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("CADASTRAMENTO DE FUNCIONARIOS");
 		lblNewLabel_1.setFont(new Font("Serif", Font.BOLD, 19));
-		lblNewLabel_1.setBounds(185, 11, 319, 23);
+		lblNewLabel_1.setBounds(156, 11, 382, 23);
 		contentPane.add(lblNewLabel_1);
 		
 		nome = new JTextField();
@@ -86,7 +86,7 @@ public class Cadastro extends JFrame {
 		lblNewLabel_3.setBounds(70, 244, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("N\u00FAmero");
+		JLabel lblNewLabel_3_1 = new JLabel("Numero");
 		lblNewLabel_3_1.setFont(new Font("Serif", Font.BOLD, 14));
 		lblNewLabel_3_1.setBounds(310, 241, 54, 14);
 		contentPane.add(lblNewLabel_3_1);
@@ -111,7 +111,7 @@ public class Cadastro extends JFrame {
 		contentPane.add(telefone);
 		telefone.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Telefone secund\u00E1rio");
+		JLabel lblNewLabel_5 = new JLabel("Telefone secundario");
 		lblNewLabel_5.setFont(new Font("Serif", Font.BOLD, 14));
 		lblNewLabel_5.setBounds(284, 117, 140, 14);
 		contentPane.add(lblNewLabel_5);
