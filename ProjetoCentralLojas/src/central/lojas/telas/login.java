@@ -13,11 +13,11 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-public class login {
-
-	private JFrame interFace;
-	private JPasswordField passwordField;
+	
+	public class login {
+	
+		private JFrame interFace;
+		private JPasswordField passwordField;
 	private JTextField textField;
 	private Cadastro cad;
 	private Caixa cax;
