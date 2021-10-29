@@ -41,7 +41,7 @@ public class Cadastro extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Nome Completo");
+		JLabel lblNewLabel = new JLabel("Nome Completo"); 
 		lblNewLabel.setFont(new Font("Serif", Font.BOLD, 14));
 		lblNewLabel.setBounds(10, 61, 136, 23);
 		contentPane.add(lblNewLabel);

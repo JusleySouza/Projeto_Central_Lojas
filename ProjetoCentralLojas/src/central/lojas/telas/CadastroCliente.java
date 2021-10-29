@@ -1,23 +1,20 @@
 package central.lojas.telas;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import BancoDeDados.Clientes;
 
 public class CadastroCliente extends JFrame {
 
@@ -33,7 +30,9 @@ public class CadastroCliente extends JFrame {
 	private JTextField RG;
 	private JTextField email;
 	
-	
+	private String nomeCliente, telefonePrincipal, telsecundario, cpfCliente,
+	RGCliente, emailCliente, bairroCliente, cidadeCliente, ruaCliente,sexo;
+	private int numero;
 	
 	public CadastroCliente() {
 		
@@ -158,6 +157,8 @@ public class CadastroCliente extends JFrame {
 		contentPane.add(email);
 		email.setColumns(10);
 		
+		ButtonGroup grupo1 = new ButtonGroup();
+		 
 		JRadioButton sexoM = new JRadioButton("Masculino");
 		sexoM.setFont(new Font("Serif", Font.BOLD, 14));
 		sexoM.setBounds(7, 344, 109, 23);
@@ -168,12 +169,71 @@ public class CadastroCliente extends JFrame {
 		sexoF.setBounds(134, 344, 109, 23);
 		contentPane.add(sexoF);
 		
+		grupo1.add(sexoM);
+		grupo1.add(sexoF);
+		
 		JLabel lblNewLabel_9 = new JLabel("Sexo");
 		lblNewLabel_9.setFont(new Font("Serif", Font.BOLD, 14));
 		lblNewLabel_9.setBounds(10, 323, 46, 14);
 		contentPane.add(lblNewLabel_9);
 		
 		JButton cadastrar = new JButton("Cadastrar");
+		cadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nomeCliente = nome.getText();
+				telefonePrincipal = telefone.getText();
+				telsecundario = telsecund.getText();
+				cpfCliente = cpf.getText();
+				RGCliente = RG.getText();
+				emailCliente = email.getText();
+				ruaCliente = rua.getText();
+				numero = Integer.valueOf(numeroC.getText());
+				bairroCliente = bairro.getText();
+				cidadeCliente = cidade.getText();
+				
+				if(sexoF.isSelected()) {
+					sexo="F";
+				}
+				else if(sexoM.isSelected()) {
+					sexo="M";
+				}
+				else {
+					sexo="";
+				}
+				
+				Clientes cliente = new Clientes();
+				int cadastro = cliente.cadastrar(nomeCliente, telefonePrincipal,
+						telsecundario, cpfCliente, RGCliente, emailCliente, 
+						ruaCliente, numero, bairroCliente, cidadeCliente, sexo);
+			
+				if(cadastro!=0)
+					{
+						JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!!!","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+						nome.setText("");
+						telefone.setText("");
+						telsecund.setText("");
+						cpf.setText("");
+						RG.setText("");
+						email.setText("");
+						rua.setText("");
+						numeroC.setText("");
+						bairro.setText("");
+						cidade.setText("");
+						sexoF.setSelected(false);
+						sexoM.setSelected(false);
+						
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null,"Erro para realizar o cadastro!!!","Erro",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				
+				
+			{
+				
+			}
+		});
 		cadastrar.setFont(new Font("Serif", Font.BOLD, 14));
 		cadastrar.setBounds(10, 486, 155, 48);
 		contentPane.add(cadastrar);

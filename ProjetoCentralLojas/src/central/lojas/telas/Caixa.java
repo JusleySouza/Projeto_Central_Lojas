@@ -89,7 +89,7 @@ public class Caixa extends JFrame {
 		
 		
 		
-		JMenu mnNewMenu1 = new JMenu("Adicionar / Editar");
+		JMenu mnNewMenu1 = new JMenu("Mercadorias");
 		menuBar.add(mnNewMenu1);
 		
 		JMenuItem mntmNewMenuItem2 = new JMenuItem("Adicionar Item");
