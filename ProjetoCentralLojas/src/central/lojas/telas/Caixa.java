@@ -36,6 +36,7 @@ public class Caixa extends JFrame {
 	private CadastroCliente cad;
 	private logincliente logcli;
 	private mercadoria additm;
+	private Cadastro cadx;
 	/**
 	 * Launch the application.
 	 */
@@ -58,6 +59,7 @@ public class Caixa extends JFrame {
 	public Caixa() {
 		logcli = new logincliente();
 		cad = new CadastroCliente();
+		cadx = new Cadastro();
 		additm = new mercadoria();
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
@@ -71,7 +73,7 @@ public class Caixa extends JFrame {
 		JMenu mnNewMenu = new JMenu("Op\u00E7\u00F5es");
 		menuBar.add(mnNewMenu);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Cadastramento");
+		JMenuItem mntmNewMenuItem = new JMenuItem("Cadastramento Cliente");
 		mntmNewMenuItem.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				cad.setVisible(true);
@@ -86,6 +88,14 @@ public class Caixa extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem1);
+		
+		JMenuItem mntmNewMenuItem3 = new JMenuItem("Cadastramento Funcionario");
+		mntmNewMenuItem3.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				cad.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem3);
 		
 		
 		

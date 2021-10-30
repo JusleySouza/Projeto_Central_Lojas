@@ -19,7 +19,6 @@ import java.awt.event.ActionEvent;
 		private JFrame interFace;
 		private JPasswordField passwordField;
 	private JTextField textField;
-	private Cadastro cad;
 	private Caixa cax;
 
 	/**
@@ -42,7 +41,6 @@ import java.awt.event.ActionEvent;
 	 * Create the application.
 	 */
 	public login() {
-		cad = new Cadastro();
 		cax = new Caixa();
 		initialize();
 	}
@@ -125,12 +123,7 @@ import java.awt.event.ActionEvent;
 		panel_6.setBounds(239, 52, 143, 33);
 		panel_1.add(panel_6);
 		
-		JButton btnNewButton_2 = new JButton("Cadastrar");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cad.setVisible(true);
-			}
-		});
+		
 		panel_6.add(btnNewButton_2);
 	}
 }
