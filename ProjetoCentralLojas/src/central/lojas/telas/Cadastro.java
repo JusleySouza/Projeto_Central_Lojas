@@ -33,7 +33,7 @@ public class Cadastro extends JFrame {
 	
 	public Cadastro() {
 		setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
-		setTitle("Clientes");
+		setTitle("Funcionarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 729, 584);
 		contentPane = new JPanel();

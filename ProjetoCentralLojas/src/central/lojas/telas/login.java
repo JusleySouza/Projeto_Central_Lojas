@@ -118,12 +118,5 @@ import java.awt.event.ActionEvent;
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
 		panel_2.add(btnNewButton_1);
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBounds(239, 52, 143, 33);
-		panel_1.add(panel_6);
-		
-		
-		panel_6.add(btnNewButton_2);
 	}
 }
