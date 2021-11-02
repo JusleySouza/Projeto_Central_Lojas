@@ -1,32 +1,36 @@
 package central.lojas.telas;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import java.awt.Dialog.ModalExclusionType;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Caixa extends JFrame {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
+public class Caixa extends JFrame {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5965163484927016912L;
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+//	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField valorR;
 	private JTextField quantidade;
@@ -92,7 +96,7 @@ public class Caixa extends JFrame {
 		JMenuItem mntmNewMenuItem3 = new JMenuItem("Cadastramento Funcionario");
 		mntmNewMenuItem3.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				cad.setVisible(true);
+				cadx.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem3);

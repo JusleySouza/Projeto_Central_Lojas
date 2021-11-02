@@ -1,23 +1,27 @@
 package central.lojas.telas;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import BancoDeDados.Profissionais;
 
 public class Cadastro extends JFrame {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -6242013657469154455L;
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField rua;
@@ -29,6 +33,12 @@ public class Cadastro extends JFrame {
 	private JTextField cpf;
 	private JTextField RG;
 	private JTextField email;
+	private JTextField cargoProfissional;
+	
+	
+	private String nomeProfissional, telefonePrincipal, telsecundario, cpfProfissional,
+	RGProfissional, emailProfissional, bairroProfissional, cidadeProfissional, ruaProfissional,sexo, cargo;
+	private int numero;
 
 	
 	public Cadastro() {
@@ -151,6 +161,8 @@ public class Cadastro extends JFrame {
 		contentPane.add(email);
 		email.setColumns(10);
 		
+		ButtonGroup escolha = new ButtonGroup();
+		
 		JRadioButton sexoM = new JRadioButton("Masculino");
 		sexoM.setFont(new Font("Serif", Font.BOLD, 14));
 		sexoM.setBounds(7, 344, 109, 23);
@@ -161,12 +173,75 @@ public class Cadastro extends JFrame {
 		sexoF.setBounds(134, 344, 109, 23);
 		contentPane.add(sexoF);
 		
+		escolha.add(sexoM);
+		escolha.add(sexoF);
+		
 		JLabel lblNewLabel_9 = new JLabel("Sexo");
 		lblNewLabel_9.setFont(new Font("Serif", Font.BOLD, 14));
 		lblNewLabel_9.setBounds(10, 323, 46, 14);
 		contentPane.add(lblNewLabel_9);
 		
 		JButton cadastrar = new JButton("Cadastrar");
+		cadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				nomeProfissional = nome.getText();
+				telefonePrincipal = telefone.getText();
+				telsecundario = telsecund.getText();
+				cpfProfissional = cpf.getText();
+				RGProfissional = RG.getText();
+				emailProfissional = email.getText();
+				ruaProfissional = rua.getText();
+				numero = Integer.valueOf(numeroC.getText());
+				bairroProfissional = bairro.getText();
+				cidadeProfissional = cidade.getText();
+				cargo = cargoProfissional.getText();
+		
+				if(sexoF.isSelected()) {
+					sexo="F";
+				}
+				else if(sexoM.isSelected()) {
+					sexo="M";
+				}
+				else {
+					sexo="";
+				}
+				
+				Profissionais profissionais = new Profissionais();
+				int cadastro = profissionais.cadastrar(nomeProfissional, telefonePrincipal,
+						telsecundario, cpfProfissional, RGProfissional, emailProfissional, 
+						ruaProfissional, numero, bairroProfissional, cidadeProfissional, sexo, cargo);
+			
+				if(cadastro!=0)
+					{
+						JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!!!","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+						nome.setText("");
+						telefone.setText("");
+						telsecund.setText("");
+						cpf.setText("");
+						RG.setText("");
+						email.setText("");
+						rua.setText("");
+						numeroC.setText("");
+						bairro.setText("");
+						cidade.setText("");
+						sexoF.setSelected(false);
+						sexoM.setSelected(false);
+						cargoProfissional.setText("");
+						
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null,"Erro para realizar o cadastro!!!","Erro",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				
+				
+			{
+				
+			}
+			
+		});
 		cadastrar.setFont(new Font("Serif", Font.BOLD, 14));
 		cadastrar.setBounds(10, 486, 155, 48);
 		contentPane.add(cadastrar);
@@ -180,5 +255,15 @@ public class Cadastro extends JFrame {
 		sair.setFont(new Font("Serif", Font.BOLD, 14));
 		sair.setBounds(506, 486, 155, 48);
 		contentPane.add(sair);
+		
+		JLabel lblNewLabel_9_1 = new JLabel("Cargo:");
+		lblNewLabel_9_1.setFont(new Font("Serif", Font.BOLD, 14));
+		lblNewLabel_9_1.setBounds(347, 323, 46, 23);
+		contentPane.add(lblNewLabel_9_1);
+		
+		cargoProfissional = new JTextField();
+		cargoProfissional.setBounds(330, 347, 343, 24);
+		contentPane.add(cargoProfissional);
+		cargoProfissional.setColumns(10);
 	}
 }
