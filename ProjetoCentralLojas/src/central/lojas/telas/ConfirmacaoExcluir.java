@@ -11,7 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import BancoDeDados.Estoque;
+import central.lojas.banco.Estoque;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -19,13 +20,7 @@ public class ConfirmacaoExcluir extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 *
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public ConfirmacaoExcluir(int Id, String nomeProduto) {
 		
 		

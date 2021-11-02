@@ -1,4 +1,4 @@
-package BancoDeDados;
+package central.lojas.banco;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,14 +18,14 @@ public class Profissionais {
 			conect = conexao.conectaBD();
 		}
 		
-		public int cadastrar(String nome, String telefone, String telefone_secundario_profissionais, String cpf,
+		public int cadastrar(String nome, String telefone, String telefone_secundario_profissional, String cpf,
 				String rg, String email, String rua, int numero, String bairro,
 				String cidade, String sexo, String cargo) {
 			try {
 				sentenca = conect.createStatement();
-				registros = sentenca.executeUpdate("INSERT into profissionais(nome, telefone, telefone_secundario_profissionais,"
+				registros = sentenca.executeUpdate("INSERT into profissionais(nome, telefone, telefone_secundario_profissional,"
 						+ " cpf, rg, email, rua, numero, bairro, cidade, sexo, cargo) values('"+nome+"',"
-					+ "'"+telefone+"','"+telefone_secundario_profissionais+"','"+cpf+"', '"+rg+"', "
+					+ "'"+telefone+"','"+telefone_secundario_profissional+"','"+cpf+"', '"+rg+"', "
 					+ "'"+email+"','"+rua+"', '"+numero+"', '"+bairro+"', '"+cidade+"', '"+sexo+"', '"+cargo+"')");
 			}
 			catch(SQLException ex)

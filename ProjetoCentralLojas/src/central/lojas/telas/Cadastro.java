@@ -14,7 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import BancoDeDados.Profissionais;
+import central.lojas.banco.Profissionais;
 
 public class Cadastro extends JFrame {
 

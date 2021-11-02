@@ -1,4 +1,4 @@
-package BancoDeDados;
+package central.lojas.banco;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

@@ -1,4 +1,4 @@
-package BancoDeDados;
+package central.lojas.banco;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -71,6 +71,8 @@ public class Estoque {
 			registros = sentenca.executeUpdate("UPDATE mercadorias SET nome='"+mercadoria.getNome()+"'," +
                     "lote='"+mercadoria.getLote()+"', quantidade_disponivel='"+mercadoria.getQuantidade()+"'," +
                     "preco='"+mercadoria.getPreco()+"', tamanho ='"+mercadoria.getTamanho()+"'  WHERE id='"+mercadoria.getId()+"'");
+			JOptionPane.showMessageDialog(null,"Alteração realizada com sucesso!!!","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+
 		}
 		catch(SQLException ex)
 		{

@@ -1,5 +1,5 @@
 package central.lojas.telas;
-import BancoDeDados.Estoque;
+import central.lojas.banco.Estoque;
 import central.lojas.dto.Mercadoria;
 
 import java.awt.EventQueue;
@@ -14,8 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import BancoDeDados.Estoque;
 
 public class ConsultaMercadoria extends JFrame {
 	
@@ -87,6 +85,7 @@ public class ConsultaMercadoria extends JFrame {
 								
 				nomeConsulta.getText();
 				mercadoria = estoque.consulta(nomeConsulta.getText());
+				limpar();
 				
 				novoNome.setText(mercadoria.getNome());
 				novoLote.setText(mercadoria.getLote());
@@ -159,6 +158,7 @@ public class ConsultaMercadoria extends JFrame {
 				mercadoria.setTamanho(novoTamanho.getText());
 				
 				int i = estoque.atualizar(mercadoria);
+				limpar();
 			}
 		});
 		btnAlterar.setFont(new Font("Dialog", Font.BOLD, 13));

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import BancoDeDados.Estoque;
+import central.lojas.banco.Estoque;
 
 public class mercadoria extends JFrame {
 
@@ -66,6 +66,11 @@ public class mercadoria extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnNewButton_1.setBounds(298, 79, 101, 23);
 		contentPane.add(btnNewButton_1);
 		

@@ -14,7 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import BancoDeDados.Clientes;
+import central.lojas.banco.Clientes;
 
 public class ConsultaCliente extends JFrame {
 
