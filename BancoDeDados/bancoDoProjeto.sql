@@ -22,8 +22,9 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE profissionais(
 	nome varchar(150) not null,
     cpf varchar(15) not null,
+	rg varchar(20) not null,
     telefone varchar(20) not null,
-    telefone_secundario varchar(20) default'',
+    telefone_secundario_profissional varchar(20) default'',
     email varchar(50) not null,
     rua varchar(100) not null,
     numero int unsigned not null,
@@ -82,5 +83,6 @@ CREATE TABLE venda_unitaria(
     PRIMARY KEY (id_venda_unitaria),
 	CONSTRAINT id_venda FOREIGN KEY (venda_id) REFERENCES venda_final (id_venda_final),
 	CONSTRAINT id_mercadoria FOREIGN KEY (mercadoria_id) REFERENCES mercadorias (id)
-) ENGINE = InnoDB
+) 
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
