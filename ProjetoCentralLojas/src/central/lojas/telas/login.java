@@ -16,38 +16,18 @@ import java.awt.event.ActionEvent;
 	
 	public class login {
 	
-		private JFrame interFace;
+		public JFrame interFace;
 		private JPasswordField passwordField;
 	private JTextField textField;
 	private Caixa cax;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					login window = new login();
-					window.interFace.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
 	public login() {
 		cax = new Caixa();
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize() {
 		interFace = new JFrame();
 		interFace.setFont(new Font("Century Gothic", Font.PLAIN, 12));
