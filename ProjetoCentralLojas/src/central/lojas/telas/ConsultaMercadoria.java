@@ -178,7 +178,7 @@ public class ConsultaMercadoria extends JFrame {
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConfirmacaoExcluir confirmacao = new ConfirmacaoExcluir(mercadoria.getId(), mercadoria.getNome());
+				ConfirmacaoExcluirMercadoria confirmacao = new ConfirmacaoExcluirMercadoria(mercadoria.getId(), mercadoria.getNome());
 				confirmacao.setVisible(true);
 				confirmacao.toFront();
 				confirmacao.requestFocus();

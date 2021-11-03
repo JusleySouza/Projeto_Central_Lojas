@@ -16,12 +16,12 @@ import central.lojas.banco.Estoque;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class ConfirmacaoExcluir extends JFrame {
+public class ConfirmacaoExcluirMercadoria extends JFrame {
 
 	private JPanel contentPane;
 
 	
-	public ConfirmacaoExcluir(int Id, String nomeProduto) {
+	public ConfirmacaoExcluirMercadoria(int Id, String nomeProduto) {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
