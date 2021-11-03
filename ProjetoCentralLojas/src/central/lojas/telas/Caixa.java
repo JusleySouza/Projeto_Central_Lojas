@@ -22,15 +22,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 public class Caixa extends JFrame {
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5965163484927016912L;
+
+	static final long serialVersionUID = 5965163484927016912L;
 	
-	/**
-	 * 
-	 */
-//	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private JTextField valorR;
 	private JTextField quantidade;
@@ -43,9 +38,8 @@ public class Caixa extends JFrame {
 	private Cadastro cadx;
 	private ConsultaMercadoria editarExcluir;
 	private ConsultaFuncionario consultafunc;
-	/**
-	 * Launch the application.
-	 */
+	private ConsultaCliente consultacli;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -69,6 +63,7 @@ public class Caixa extends JFrame {
 		additm = new mercadoria();
 		editarExcluir = new ConsultaMercadoria();
 		consultafunc = new ConsultaFuncionario();
+		consultacli = new ConsultaCliente();
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setTitle("Caixa");
@@ -110,6 +105,14 @@ public class Caixa extends JFrame {
 				consultafunc.setVisible(true);
 			}
 		});
+		
+		JMenuItem mntmEditarExcluirCliente = new JMenuItem("Editar/Excluir Item (Cliente)");
+		mntmEditarExcluirCliente.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				consultacli.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmEditarExcluirCliente);
 		mnNewMenu.add(mntmNewMenuItem_1);
 		mnNewMenu.add(mntmNewMenuItem1);
 		
@@ -132,7 +135,9 @@ public class Caixa extends JFrame {
 				editarExcluir.setVisible(true);
 			}
 		});
-		
+
+		mnNewMenu1.add(editarExcluirItem);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -255,7 +260,6 @@ public class Caixa extends JFrame {
 		
 		dinC = new JTextField();
 		dinC.addFocusListener(new FocusAdapter() {
-			@Override
 			public void focusGained(FocusEvent e) {
 				if (dinC.getText().equals("0"));
 				{

@@ -33,13 +33,7 @@ public class ConsultaFuncionario extends JFrame {
 			}
 		});
 	}
-
 	
-	public String nome;
-	public String lote;
-	public int quantidade;
-	public double preco;
-	public String tamanho;
 	private JTextField nomeConsulta;
 	private JTextField novoNome;
 	private JTextField novoLote;
