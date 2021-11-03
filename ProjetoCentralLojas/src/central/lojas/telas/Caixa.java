@@ -103,6 +103,14 @@ public class Caixa extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem3);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Editar/Excluir Item (Funcionario)");
+		mntmNewMenuItem_1.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				consultafunc.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_1);
 		mnNewMenu.add(mntmNewMenuItem1);
 		
 		
@@ -124,15 +132,6 @@ public class Caixa extends JFrame {
 				editarExcluir.setVisible(true);
 			}
 		});
-		mnNewMenu1.add(editarExcluirItem);
-		
-		JMenuItem mtnmNewMenuItem4 = new JMenuItem("Alterar/Excluir Item");
-		editarExcluirItem.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				consultafunc.setVisible(true);
-			}
-		});
-		mnNewMenu1.add(mtnmNewMenuItem4);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
