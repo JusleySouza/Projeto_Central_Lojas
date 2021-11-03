@@ -41,7 +41,7 @@ public class CadastroCliente extends JFrame {
 		setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
 		setTitle("Clientes");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 729, 584);
+		setBounds(100, 100, 717, 556);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -235,7 +235,7 @@ public class CadastroCliente extends JFrame {
 			}
 		});
 		cadastrar.setFont(new Font("Serif", Font.BOLD, 14));
-		cadastrar.setBounds(10, 486, 155, 48);
+		cadastrar.setBounds(22, 451, 155, 35);
 		contentPane.add(cadastrar);
 		
 		JButton limpar = new JButton("Limpar");
@@ -255,7 +255,7 @@ public class CadastroCliente extends JFrame {
 			}
 		});
 		limpar.setFont(new Font("Serif", Font.BOLD, 14));
-		limpar.setBounds(259, 486, 155, 48);
+		limpar.setBounds(269, 451, 155, 35);
 		contentPane.add(limpar);
 		
 		JButton sair = new JButton("Sair");
@@ -265,7 +265,7 @@ public class CadastroCliente extends JFrame {
 			}
 		});
 		sair.setFont(new Font("Serif", Font.BOLD, 14));
-		sair.setBounds(506, 486, 155, 48);
+		sair.setBounds(518, 451, 155, 35);
 		contentPane.add(sair);
 	}
 }

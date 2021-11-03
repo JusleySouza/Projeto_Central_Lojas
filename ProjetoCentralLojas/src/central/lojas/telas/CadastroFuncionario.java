@@ -45,7 +45,7 @@ public class CadastroFuncionario extends JFrame {
 		setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
 		setTitle("Funcionarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 729, 584);
+		setBounds(100, 100, 713, 550);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -243,17 +243,17 @@ public class CadastroFuncionario extends JFrame {
 			
 		});
 		cadastrar.setFont(new Font("Serif", Font.BOLD, 14));
-		cadastrar.setBounds(10, 486, 155, 48);
+		cadastrar.setBounds(31, 443, 155, 39);
 		contentPane.add(cadastrar);
 		
 		JButton limpar = new JButton("Limpar");
 		limpar.setFont(new Font("Serif", Font.BOLD, 14));
-		limpar.setBounds(259, 486, 155, 48);
+		limpar.setBounds(269, 443, 155, 39);
 		contentPane.add(limpar);
 		
 		JButton sair = new JButton("Sair");
 		sair.setFont(new Font("Serif", Font.BOLD, 14));
-		sair.setBounds(506, 486, 155, 48);
+		sair.setBounds(505, 443, 155, 39);
 		contentPane.add(sair);
 		
 		JLabel lblNewLabel_9_1 = new JLabel("Cargo:");

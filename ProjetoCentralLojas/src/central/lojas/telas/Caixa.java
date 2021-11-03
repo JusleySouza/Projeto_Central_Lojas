@@ -68,12 +68,12 @@ public class Caixa extends JFrame {
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setTitle("Caixa");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 776, 526);
+		setBounds(100, 100, 723, 518);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Op\u00E7\u00F5es");
+		JMenu mnNewMenu = new JMenu("Clientes");
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Cadastramento Cliente");
@@ -91,21 +91,6 @@ public class Caixa extends JFrame {
 			}
 		});
 		
-		JMenuItem mntmNewMenuItem3 = new JMenuItem("Cadastramento Funcionario");
-		mntmNewMenuItem3.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				cadx.setVisible(true);
-			}
-		});
-		mnNewMenu.add(mntmNewMenuItem3);
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Editar/Excluir Item (Funcionario)");
-		mntmNewMenuItem_1.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				consultafunc.setVisible(true);
-			}
-		});
-		
 		JMenuItem mntmEditarExcluirCliente = new JMenuItem("Editar/Excluir Item (Cliente)");
 		mntmEditarExcluirCliente.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -113,8 +98,26 @@ public class Caixa extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmEditarExcluirCliente);
-		mnNewMenu.add(mntmNewMenuItem_1);
 		mnNewMenu.add(mntmNewMenuItem1);
+		
+		JMenu mnNewMenu_1 = new JMenu("Funcionarios");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Cadastramento Funcionario");
+		mntmNewMenuItem_2.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				cadx.setVisible(true);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_2);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Editar/Excluir Funcionario");
+		mntmNewMenuItem_3.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				consultafunc.setVisible(true);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_3);
 		
 		
 		
@@ -144,7 +147,7 @@ public class Caixa extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 750, 454);
+		panel.setBounds(0, 0, 707, 457);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -155,7 +158,6 @@ public class Caixa extends JFrame {
 		
 		valorR = new JTextField();
 		valorR.addFocusListener(new FocusAdapter() {
-			@Override
 			public void focusGained(FocusEvent e) {
 				if (valorR.getText().equals("0"));
 				{
@@ -224,7 +226,7 @@ public class Caixa extends JFrame {
 				
 			}
 		});
-		Calcular.setBounds(26, 172, 144, 52);
+		Calcular.setBounds(44, 386, 144, 35);
 		panel.add(Calcular);
 		
 		JButton limpar = new JButton("Limpar");
@@ -235,7 +237,7 @@ public class Caixa extends JFrame {
 				valorR.setText("");
 			}
 		});
-		limpar.setBounds(26, 357, 144, 52);
+		limpar.setBounds(279, 386, 144, 35);
 		panel.add(limpar);
 		
 		JButton limparT = new JButton("Fechar venda");
@@ -250,7 +252,7 @@ public class Caixa extends JFrame {
 				
 			}
 		});
-		limparT.setBounds(197, 357, 140, 52);
+		limparT.setBounds(508, 386, 140, 35);
 		panel.add(limparT);
 		
 		JLabel lblNewLabel_3 = new JLabel("Valor Recebido");
