@@ -16,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import central.lojas.banco.Profissionais;
 
-public class Cadastro extends JFrame {
+public class CadastroFuncionario extends JFrame {
 
 	/**
 	 * 
@@ -41,7 +41,7 @@ public class Cadastro extends JFrame {
 	private int numero;
 
 	
-	public Cadastro() {
+	public CadastroFuncionario() {
 		setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
 		setTitle("Funcionarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

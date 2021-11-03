@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JRadioButton;
 
 public class ConsultaCliente extends JFrame {
 	
@@ -33,23 +34,21 @@ public class ConsultaCliente extends JFrame {
 		});
 	}
 	
-	private JTextField nomeConsulta;
-	private JTextField novoNome;
-	private JTextField novoLote;
-	private JTextField novaQuantidade;
-	private JTextField novoPreco;
-	private JTextField novoTamanho;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField nomeConsultaCliente;
+	private JTextField novoNomeCliente;
+	private JTextField novoTelefoneCliente;
+	private JTextField novoTelSecundarioCliente;
+	private JTextField novoCpfCliente;
+	private JTextField novoRgCliente;
+	private JTextField novoEmailCliente;
+	private JTextField novaRuaCliente;
+	private JTextField novoNumeroCliente;
+	private JTextField novoBairroCliente;
+	private JTextField novaCidadeCliente;
 
 	
 	public ConsultaCliente() {
-		setTitle("Mercadorias");
+		setTitle("Clientes");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 869, 494);
 		contentPane = new JPanel();
@@ -57,25 +56,25 @@ public class ConsultaCliente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton_1 = new JButton("Sair");
-		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnSair = new JButton("Sair");
+		btnSair.setFont(new Font("Dialog", Font.BOLD, 13));
+		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(DISPOSE_ON_CLOSE);
 			}
 		});
-		btnNewButton_1.setBounds(396, 421, 109, 23);
-		contentPane.add(btnNewButton_1);
+		btnSair.setBounds(698, 417, 109, 27);
+		contentPane.add(btnSair);
 		
 		JLabel lblNewLabel = new JLabel("Cliente a Consultar");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		lblNewLabel.setBounds(10, 11, 216, 14);
 		contentPane.add(lblNewLabel);
 		
-		nomeConsulta = new JTextField();
-		nomeConsulta.setBounds(10, 36, 300, 20);
-		contentPane.add(nomeConsulta);
-		nomeConsulta.setColumns(10);
+		nomeConsultaCliente = new JTextField();
+		nomeConsultaCliente.setBounds(10, 36, 626, 20);
+		contentPane.add(nomeConsultaCliente);
+		nomeConsultaCliente.setColumns(10);
 		
 		JButton btnProcurar = new JButton("Procurar");
 		btnProcurar.addActionListener(new ActionListener() {
@@ -85,58 +84,58 @@ public class ConsultaCliente extends JFrame {
 			}
 		});
 		btnProcurar.setFont(new Font("Dialog", Font.BOLD, 13));
-		btnProcurar.setBounds(734, 34, 109, 23);
+		btnProcurar.setBounds(698, 32, 121, 27);
 		contentPane.add(btnProcurar);
 		
-		JLabel lblNewLabel_1 = new JLabel("Novo A:");
+		JLabel lblNewLabel_1 = new JLabel("Novo Nome:");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_1.setBounds(10, 87, 84, 14);
+		lblNewLabel_1.setBounds(10, 79, 84, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Novo B:");
+		JLabel lblNewLabel_2 = new JLabel("Novo Telefone:");
 		lblNewLabel_2.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(10, 143, 84, 14);
+		lblNewLabel_2.setBounds(10, 143, 134, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Nova C:");
+		JLabel lblNewLabel_3 = new JLabel("Novo Telefone Secundario:");
 		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(10, 203, 134, 14);
+		lblNewLabel_3.setBounds(290, 143, 205, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Novo D:");
+		JLabel lblNewLabel_4 = new JLabel("Novo CPF:");
 		lblNewLabel_4.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_4.setBounds(10, 259, 84, 14);
+		lblNewLabel_4.setBounds(10, 212, 84, 14);
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Novo E:");
+		JLabel lblNewLabel_5 = new JLabel("Novo RG:");
 		lblNewLabel_5.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_5.setBounds(10, 315, 109, 14);
+		lblNewLabel_5.setBounds(290, 212, 109, 14);
 		contentPane.add(lblNewLabel_5);
 		
-		novoNome = new JTextField();
-		novoNome.setBounds(10, 112, 300, 20);
-		contentPane.add(novoNome);
-		novoNome.setColumns(10);
+		novoNomeCliente = new JTextField();
+		novoNomeCliente.setBounds(10, 96, 625, 20);
+		contentPane.add(novoNomeCliente);
+		novoNomeCliente.setColumns(10);
 		
-		novoLote = new JTextField();
-		novoLote.setBounds(10, 168, 300, 20);
-		contentPane.add(novoLote);
-		novoLote.setColumns(10);
+		novoTelefoneCliente = new JTextField();
+		novoTelefoneCliente.setBounds(10, 168, 229, 20);
+		contentPane.add(novoTelefoneCliente);
+		novoTelefoneCliente.setColumns(10);
 		
-		novaQuantidade = new JTextField();
-		novaQuantidade.setBounds(10, 228, 300, 20);
-		contentPane.add(novaQuantidade);
-		novaQuantidade.setColumns(10);
+		novoTelSecundarioCliente = new JTextField();
+		novoTelSecundarioCliente.setBounds(290, 168, 229, 20);
+		contentPane.add(novoTelSecundarioCliente);
+		novoTelSecundarioCliente.setColumns(10);
 		
-		novoPreco = new JTextField();
-		novoPreco.setBounds(10, 284, 300, 20);
-		contentPane.add(novoPreco);
-		novoPreco.setColumns(10);
+		novoCpfCliente = new JTextField();
+		novoCpfCliente.setBounds(10, 237, 229, 20);
+		contentPane.add(novoCpfCliente);
+		novoCpfCliente.setColumns(10);
 		
-		novoTamanho = new JTextField();
-		novoTamanho.setBounds(10, 340, 300, 20);
-		contentPane.add(novoTamanho);
-		novoTamanho.setColumns(10);
+		novoRgCliente = new JTextField();
+		novoRgCliente.setBounds(290, 237, 229, 20);
+		contentPane.add(novoRgCliente);
+		novoRgCliente.setColumns(10);
 		
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
@@ -148,18 +147,18 @@ public class ConsultaCliente extends JFrame {
 			}
 		});
 		btnAlterar.setFont(new Font("Dialog", Font.BOLD, 13));
-		btnAlterar.setBounds(10, 421, 109, 23);
+		btnAlterar.setBounds(53, 417, 109, 27);
 		contentPane.add(btnAlterar);
 		
-		JButton btnNewButton = new JButton("Limpar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpar();
 			}
 		});
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 13));
-		btnNewButton.setBounds(267, 421, 109, 23);
-		contentPane.add(btnNewButton);
+		btnLimpar.setFont(new Font("Dialog", Font.BOLD, 13));
+		btnLimpar.setBounds(490, 417, 109, 27);
+		contentPane.add(btnLimpar);
 		
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
@@ -172,86 +171,81 @@ public class ConsultaCliente extends JFrame {
 			}
 		});
 		btnExcluir.setFont(new Font("Dialog", Font.BOLD, 13));
-		btnExcluir.setBounds(137, 421, 109, 23);
+		btnExcluir.setBounds(264, 417, 109, 27);
 		contentPane.add(btnExcluir);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Novo F:");
+		JLabel lblNewLabel_1_1 = new JLabel("Novo Email:");
 		lblNewLabel_1_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_1_1.setBounds(355, 11, 84, 14);
+		lblNewLabel_1_1.setBounds(543, 212, 84, 14);
 		contentPane.add(lblNewLabel_1_1);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(355, 36, 300, 20);
-		contentPane.add(textField);
+		novoEmailCliente = new JTextField();
+		novoEmailCliente.setColumns(10);
+		novoEmailCliente.setBounds(543, 237, 291, 20);
+		contentPane.add(novoEmailCliente);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Novo G:");
+		JLabel lblNewLabel_2_1 = new JLabel("Nova Rua:");
 		lblNewLabel_2_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_2_1.setBounds(355, 67, 84, 14);
+		lblNewLabel_2_1.setBounds(10, 286, 84, 14);
 		contentPane.add(lblNewLabel_2_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(355, 92, 300, 20);
-		contentPane.add(textField_1);
+		novaRuaCliente = new JTextField();
+		novaRuaCliente.setColumns(10);
+		novaRuaCliente.setBounds(10, 311, 263, 20);
+		contentPane.add(novaRuaCliente);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Nova H:");
+		JLabel lblNewLabel_3_1 = new JLabel("Novo Numero:");
 		lblNewLabel_3_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_3_1.setBounds(355, 127, 134, 14);
+		lblNewLabel_3_1.setBounds(290, 286, 134, 14);
 		contentPane.add(lblNewLabel_3_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(355, 152, 300, 20);
-		contentPane.add(textField_2);
+		novoNumeroCliente = new JTextField();
+		novoNumeroCliente.setColumns(10);
+		novoNumeroCliente.setBounds(290, 311, 109, 20);
+		contentPane.add(novoNumeroCliente);
 		
-		JLabel lblNewLabel_4_1 = new JLabel("Novo I:");
+		JLabel lblNewLabel_4_1 = new JLabel("Novo Bairro:");
 		lblNewLabel_4_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_4_1.setBounds(355, 183, 84, 14);
+		lblNewLabel_4_1.setBounds(434, 286, 84, 14);
 		contentPane.add(lblNewLabel_4_1);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(355, 208, 300, 20);
-		contentPane.add(textField_3);
+		novoBairroCliente = new JTextField();
+		novoBairroCliente.setColumns(10);
+		novoBairroCliente.setBounds(434, 311, 176, 20);
+		contentPane.add(novoBairroCliente);
 		
-		JLabel lblNewLabel_5_1 = new JLabel("Novo J:");
+		JLabel lblNewLabel_5_1 = new JLabel("Nova Cidade:");
 		lblNewLabel_5_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_5_1.setBounds(355, 239, 109, 14);
+		lblNewLabel_5_1.setBounds(641, 286, 109, 14);
 		contentPane.add(lblNewLabel_5_1);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(355, 264, 300, 20);
-		contentPane.add(textField_4);
+		novaCidadeCliente = new JTextField();
+		novaCidadeCliente.setColumns(10);
+		novaCidadeCliente.setBounds(641, 311, 193, 20);
+		contentPane.add(novaCidadeCliente);
 		
-		JLabel lblNewLabel_5_1_1 = new JLabel("Novo K:");
+		JLabel lblNewLabel_5_1_1 = new JLabel("Novo Sexo:");
 		lblNewLabel_5_1_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_5_1_1.setBounds(355, 297, 109, 14);
+		lblNewLabel_5_1_1.setBounds(10, 354, 109, 14);
 		contentPane.add(lblNewLabel_5_1_1);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(355, 322, 300, 20);
-		contentPane.add(textField_5);
+		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		rdbtnMasculino.setFont(new Font("Dialog", Font.BOLD, 13));
+		rdbtnMasculino.setBounds(10, 375, 109, 23);
+		contentPane.add(rdbtnMasculino);
 		
-		JLabel lblNewLabel_5_1_2 = new JLabel("Novo L:");
-		lblNewLabel_5_1_2.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_5_1_2.setBounds(355, 353, 109, 14);
-		contentPane.add(lblNewLabel_5_1_2);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(355, 378, 300, 20);
-		contentPane.add(textField_6);
+		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
+		rdbtnFeminino.setFont(new Font("Dialog", Font.BOLD, 13));
+		rdbtnFeminino.setBounds(117, 375, 109, 23);
+		contentPane.add(rdbtnFeminino);
 	}
 	
 	public void limpar() {
-		novoNome.setText("");
-		novoLote.setText("");
-		novaQuantidade.setText("");
-		novoPreco.setText("");
-		novoTamanho.setText("");
-		nomeConsulta.setText("");
+		novoNomeCliente.setText("");
+		novoTelefoneCliente.setText("");
+		novoTelSecundarioCliente.setText("");
+		novoCpfCliente.setText("");
+		novoRgCliente.setText("");
+		nomeConsultaCliente.setText("");
 	}
 }

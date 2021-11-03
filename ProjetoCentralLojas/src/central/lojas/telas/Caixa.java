@@ -35,7 +35,7 @@ public class Caixa extends JFrame {
 	private CadastroCliente cad;
 	private logincliente logcli;
 	private mercadoria additm;
-	private Cadastro cadx;
+	private CadastroFuncionario cadx;
 	private ConsultaMercadoria editarExcluir;
 	private ConsultaFuncionario consultafunc;
 	private ConsultaCliente consultacli;
@@ -59,7 +59,7 @@ public class Caixa extends JFrame {
 	public Caixa() {
 		logcli = new logincliente();
 		cad = new CadastroCliente();
-		cadx = new Cadastro();
+		cadx = new CadastroFuncionario();
 		additm = new mercadoria();
 		editarExcluir = new ConsultaMercadoria();
 		consultafunc = new ConsultaFuncionario();
