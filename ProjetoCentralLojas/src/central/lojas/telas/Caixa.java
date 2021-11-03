@@ -93,7 +93,6 @@ public class Caixa extends JFrame {
 				logcli.setVisible(true);
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem1);
 		
 		JMenuItem mntmNewMenuItem3 = new JMenuItem("Cadastramento Funcionario");
 		mntmNewMenuItem3.addMouseListener(new MouseAdapter() {
@@ -102,6 +101,7 @@ public class Caixa extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem3);
+		mnNewMenu.add(mntmNewMenuItem1);
 		
 		
 		
