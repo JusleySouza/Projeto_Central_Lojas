@@ -43,6 +43,7 @@ public class Caixa extends JFrame {
 	private Cadastro cadx;
 	private ConsultaMercadoria editarExcluir;
 	private ConsultaFuncionario consultafunc;
+	private ConsultaCliente consultacli;
 	/**
 	 * Launch the application.
 	 */
@@ -69,6 +70,7 @@ public class Caixa extends JFrame {
 		additm = new mercadoria();
 		editarExcluir = new ConsultaMercadoria();
 		consultafunc = new ConsultaFuncionario();
+		consultacli = new ConsultaCliente();
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setTitle("Caixa");
@@ -126,13 +128,21 @@ public class Caixa extends JFrame {
 		});
 		mnNewMenu1.add(editarExcluirItem);
 		
-		JMenuItem mtnmNewMenuItem4 = new JMenuItem("Alterar/Excluir Item");
+		JMenuItem mtnmNewMenuItem4 = new JMenuItem("Consulta Funcionario");
 		editarExcluirItem.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				consultafunc.setVisible(true);
 			}
 		});
 		mnNewMenu1.add(mtnmNewMenuItem4);
+		
+		JMenuItem mtnmNewMenuItem41 = new JMenuItem("Consulta Cliente");
+		editarExcluirItem.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				consultacli.setVisible(true);
+			}
+		});
+		mnNewMenu1.add(mtnmNewMenuItem41);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
