@@ -21,6 +21,7 @@ public class ConfirmacaoExcluirCliente extends JFrame {
 
 	
 	public ConfirmacaoExcluirCliente(String nome) {
+		setTitle("Cliente");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 322, 229);

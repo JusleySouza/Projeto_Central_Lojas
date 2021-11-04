@@ -2,6 +2,7 @@ package central.lojas.dto;
 
 public class Funcionario {
 	
+	private String nome;
 	private String telefone;
 	private String telefoneSecundario;
 	private String cpf;
@@ -14,7 +15,6 @@ public class Funcionario {
 	private String cargo;
 	private String sexo;
 	
-	private String nome;
 	public String getNome() {
 		return nome;
 	}

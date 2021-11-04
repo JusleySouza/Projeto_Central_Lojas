@@ -7,4 +7,5 @@ public class CentralLojasMain {
 		inicio.interFace.setVisible(true);
 	}
 
+	
 }

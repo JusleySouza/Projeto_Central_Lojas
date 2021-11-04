@@ -1,20 +1,20 @@
 package central.lojas.telas;
-import central.lojas.banco.Estoque;
-import central.lojas.dto.Mercadoria;
-
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JRadioButton;
+
+import central.lojas.banco.Profissionais;
+import central.lojas.dto.Funcionario;
 
 public class ConsultaFuncionario extends JFrame {
 	
@@ -46,16 +46,34 @@ public class ConsultaFuncionario extends JFrame {
 	private JTextField novoBairroFuncionario;
 	private JTextField novaCidadeFuncionario;
 	private JTextField novoCargo;
+	
+	Profissionais profissionais = new Profissionais();
+	Funcionario funcionario = new Funcionario();
 
 	
 	public ConsultaFuncionario() {
-		setTitle("Funcion\u00E1rios");
+		setTitle("Funcionarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 869, 494);
 		novoCpf = new JPanel();
 		novoCpf.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(novoCpf);
 		novoCpf.setLayout(null);
+		
+		ButtonGroup escolha = new ButtonGroup();
+		
+		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		rdbtnMasculino.setFont(new Font("Dialog", Font.BOLD, 13));
+		rdbtnMasculino.setBounds(10, 363, 109, 23);
+		novoCpf.add(rdbtnMasculino);
+		
+		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
+		rdbtnFeminino.setFont(new Font("Dialog", Font.BOLD, 13));
+		rdbtnFeminino.setBounds(117, 363, 109, 23);
+		novoCpf.add(rdbtnFeminino);
+		
+		escolha.add(rdbtnMasculino);
+		escolha.add(rdbtnFeminino);
 		
 		JButton btnSair = new JButton("Sair");
 		btnSair.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -67,7 +85,7 @@ public class ConsultaFuncionario extends JFrame {
 		btnSair.setBounds(711, 417, 109, 27);
 		novoCpf.add(btnSair);
 		
-		JLabel lblNewLabel = new JLabel("Funcion\u00E1rio a Consultar:");
+		JLabel lblNewLabel = new JLabel("Funcionario a Consultar:");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		lblNewLabel.setBounds(10, 11, 216, 14);
 		novoCpf.add(lblNewLabel);
@@ -80,7 +98,29 @@ public class ConsultaFuncionario extends JFrame {
 		JButton btnProcurar = new JButton("Procurar");
 		btnProcurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-								
+				nomeConsultaFuncionario.getText();
+				funcionario = profissionais.consulta(nomeConsultaFuncionario.getText());
+				limpar();
+				
+				novoNomeFuncionario.setText(funcionario.getNome());
+				novoTelefoneFuncionario.setText(funcionario.getTelefone());
+				novoTelSecundarioFuncionario.setText(funcionario.getTelefoneSecundario());
+				novoCpfFuncionario.setText(funcionario.getCpf());
+				novoRgFuncionario.setText(funcionario.getRg());	
+				novoEmailFuncionario.setText(funcionario.getEmail());
+				novaRuaFuncionario.setText(funcionario.getRua());
+				novoNumeroFuncionario.setText(""+funcionario.getNumero());
+				novoBairroFuncionario.setText(funcionario.getBairro());
+				novoCargo.setText(funcionario.getCargo());
+				novaCidadeFuncionario.setText(funcionario.getCidade());	
+				
+				if(funcionario.getSexo().equals("F")) {
+					rdbtnFeminino.setSelected(true);;
+				}
+				else if(funcionario.getSexo().equals("M")) {
+					rdbtnMasculino.setSelected(true);;
+				}
+				
 							
 			}
 		});
@@ -98,7 +138,7 @@ public class ConsultaFuncionario extends JFrame {
 		lblNewLabel_2.setBounds(10, 143, 154, 14);
 		novoCpf.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Novo Telefone Secund\u00E1rio:");
+		JLabel lblNewLabel_3 = new JLabel("Novo Telefone Secundario:");
 		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblNewLabel_3.setBounds(284, 143, 236, 14);
 		novoCpf.add(lblNewLabel_3);
@@ -141,7 +181,30 @@ public class ConsultaFuncionario extends JFrame {
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				funcionario.setNome(novoNomeFuncionario.getText());
+				funcionario.setTelefone(novoTelefoneFuncionario.getText());
+				funcionario.setTelefoneSecundario(novoTelSecundarioFuncionario.getText());
+				funcionario.setCpf(novoCpfFuncionario.getText());
+				funcionario.setRg(novoRgFuncionario.getText());
+				funcionario.setEmail(novoEmailFuncionario.getText());
+				funcionario.setRua(novaRuaFuncionario.getText());
+				funcionario.setNumero(Integer.valueOf(novoNumeroFuncionario.getText()));
+				funcionario.setBairro(novoBairroFuncionario.getText());
+				funcionario.setCidade(novaCidadeFuncionario.getText());
+				funcionario.setCargo(novoCargo.getText());
 				
+				if(rdbtnFeminino.isSelected()) {
+					funcionario.setSexo("F");
+				}
+				else if(rdbtnMasculino.isSelected()) {
+					funcionario.setSexo("M");
+				}
+				else {
+					funcionario.setSexo("");;
+				}
+				
+				
+				profissionais.atualizar(funcionario);	
 				
 				
 				limpar();
@@ -164,7 +227,7 @@ public class ConsultaFuncionario extends JFrame {
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			ConfirmacaoExcluirFuncionario confirmacaofunc = new ConfirmacaoExcluirFuncionario();
+			ConfirmacaoExcluirFuncionario confirmacaofunc = new ConfirmacaoExcluirFuncionario(funcionario.getNome());
 				confirmacaofunc.setVisible(true);
 				confirmacaofunc.toFront();
 				confirmacaofunc.requestFocus();
@@ -195,7 +258,7 @@ public class ConsultaFuncionario extends JFrame {
 		novaRuaFuncionario.setBounds(10, 299, 259, 20);
 		novoCpf.add(novaRuaFuncionario);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Novo N\u00FAmero:");
+		JLabel lblNewLabel_3_1 = new JLabel("Novo Numero:");
 		lblNewLabel_3_1.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblNewLabel_3_1.setBounds(284, 274, 134, 14);
 		novoCpf.add(lblNewLabel_3_1);
@@ -240,23 +303,21 @@ public class ConsultaFuncionario extends JFrame {
 		lblNewLabel_6.setBounds(10, 342, 84, 14);
 		novoCpf.add(lblNewLabel_6);
 		
-		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
-		rdbtnMasculino.setFont(new Font("Dialog", Font.BOLD, 13));
-		rdbtnMasculino.setBounds(10, 363, 109, 23);
-		novoCpf.add(rdbtnMasculino);
 		
-		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
-		rdbtnFeminino.setFont(new Font("Dialog", Font.BOLD, 13));
-		rdbtnFeminino.setBounds(117, 363, 109, 23);
-		novoCpf.add(rdbtnFeminino);
 	}
 	
 	public void limpar() {
+		nomeConsultaFuncionario.setText("");
 		novoNomeFuncionario.setText("");
 		novoTelefoneFuncionario.setText("");
 		novoTelSecundarioFuncionario.setText("");
 		novoCpfFuncionario.setText("");
 		novoRgFuncionario.setText("");
-		nomeConsultaFuncionario.setText("");
+		novoEmailFuncionario.setText("");
+		novaRuaFuncionario.setText("");
+		novoNumeroFuncionario.setText("");
+		novoBairroFuncionario.setText("");
+		novaCidadeFuncionario.setText("");
+		novoCargo.setText("");
 	}
 }
