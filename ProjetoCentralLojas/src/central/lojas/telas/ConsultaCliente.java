@@ -1,20 +1,20 @@
 package central.lojas.telas;
-import central.lojas.banco.Estoque;
-import central.lojas.dto.Mercadoria;
-
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JRadioButton;
+
+import central.lojas.banco.ClientesBanco;
+import central.lojas.dto.Cliente;
 
 public class ConsultaCliente extends JFrame {
 	
@@ -45,7 +45,9 @@ public class ConsultaCliente extends JFrame {
 	private JTextField novoNumeroCliente;
 	private JTextField novoBairroCliente;
 	private JTextField novaCidadeCliente;
-
+	
+	ClientesBanco clientebanco = new ClientesBanco();
+	Cliente cliente = new Cliente();
 	
 	public ConsultaCliente() {
 		setTitle("Clientes");
@@ -55,6 +57,21 @@ public class ConsultaCliente extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		ButtonGroup escolha = new ButtonGroup();
+		
+		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		rdbtnMasculino.setFont(new Font("Dialog", Font.BOLD, 13));
+		rdbtnMasculino.setBounds(10, 375, 109, 23);
+		contentPane.add(rdbtnMasculino);
+		
+		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
+		rdbtnFeminino.setFont(new Font("Dialog", Font.BOLD, 13));
+		rdbtnFeminino.setBounds(117, 375, 109, 23);
+		contentPane.add(rdbtnFeminino);
+		
+		escolha.add(rdbtnMasculino);
+		escolha.add(rdbtnFeminino);
 		
 		JButton btnSair = new JButton("Sair");
 		btnSair.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -79,7 +96,28 @@ public class ConsultaCliente extends JFrame {
 		JButton btnProcurar = new JButton("Procurar");
 		btnProcurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-								
+				nomeConsultaCliente.getText();
+				cliente = clientebanco.consulta(nomeConsultaCliente.getText());
+				limpar();
+				
+				novoNomeCliente.setText(cliente.getNome());
+				novoTelefoneCliente.setText(cliente.getTelefone());
+				novoTelSecundarioCliente.setText(cliente.getTelefoneSecundario());
+				novoCpfCliente.setText(cliente.getCpf());
+				novoRgCliente.setText(cliente.getRg());	
+				novoEmailCliente.setText(cliente.getEmail());
+				novaRuaCliente.setText(cliente.getRua());
+				novoNumeroCliente.setText(""+cliente.getNumero());
+				novoBairroCliente.setText(cliente.getBairro());
+				novaCidadeCliente.setText(cliente.getCidade());	
+				
+				if(cliente.getSexo().equals("F")) {
+					rdbtnFeminino.setSelected(true);;
+				}
+				else if(cliente.getSexo().equals("M")) {
+					rdbtnMasculino.setSelected(true);;
+				}
+				
 							
 			}
 		});
@@ -140,9 +178,29 @@ public class ConsultaCliente extends JFrame {
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cliente.setNome(novoNomeCliente.getText());
+				cliente.setTelefone(novoTelefoneCliente.getText());
+				cliente.setTelefoneSecundario(novoTelSecundarioCliente.getText());
+				cliente.setCpf(novoCpfCliente.getText());
+				cliente.setRg(novoRgCliente.getText());
+				cliente.setEmail(novoEmailCliente.getText());
+				cliente.setRua(novaRuaCliente.getText());
+				cliente.setNumero(Integer.valueOf(novoNumeroCliente.getText()));
+				cliente.setBairro(novoBairroCliente.getText());
+				cliente.setCidade(novaCidadeCliente.getText());
+				
+				if(rdbtnFeminino.isSelected()) {
+					cliente.setSexo("F");
+				}
+				else if(rdbtnMasculino.isSelected()) {
+					cliente.setSexo("M");
+				}
+				else {
+					cliente.setSexo("");;
+				}
 				
 				
-				
+				clientebanco.atualizar(cliente);
 				limpar();
 			}
 		});
@@ -163,7 +221,7 @@ public class ConsultaCliente extends JFrame {
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConfirmacaoExcluirCliente confirmacaoCli = new ConfirmacaoExcluirCliente();
+				ConfirmacaoExcluirCliente confirmacaoCli = new ConfirmacaoExcluirCliente(cliente.getNome());
 				confirmacaoCli.setVisible(true);
 				confirmacaoCli.toFront();
 				confirmacaoCli.requestFocus();
@@ -229,23 +287,21 @@ public class ConsultaCliente extends JFrame {
 		lblNewLabel_5_1_1.setBounds(10, 354, 109, 14);
 		contentPane.add(lblNewLabel_5_1_1);
 		
-		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
-		rdbtnMasculino.setFont(new Font("Dialog", Font.BOLD, 13));
-		rdbtnMasculino.setBounds(10, 375, 109, 23);
-		contentPane.add(rdbtnMasculino);
 		
-		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
-		rdbtnFeminino.setFont(new Font("Dialog", Font.BOLD, 13));
-		rdbtnFeminino.setBounds(117, 375, 109, 23);
-		contentPane.add(rdbtnFeminino);
 	}
 	
 	public void limpar() {
+		nomeConsultaCliente.setText("");
 		novoNomeCliente.setText("");
 		novoTelefoneCliente.setText("");
 		novoTelSecundarioCliente.setText("");
 		novoCpfCliente.setText("");
 		novoRgCliente.setText("");
-		nomeConsultaCliente.setText("");
+		novoEmailCliente.setText("");
+		novaRuaCliente.setText("");
+		novoNumeroCliente.setText("");
+		novoBairroCliente.setText("");
+		novaCidadeCliente.setText("");
+		
 	}
 }

@@ -62,5 +62,6 @@ public class ConfirmacaoExcluirFuncionario extends JFrame {
 		lblNewLabel_1.setFont(new Font("Dialog", Font.PLAIN, 14));
 		lblNewLabel_1.setBounds(10, 44, 255, 34);
 		contentPane.add(lblNewLabel_1);
+//		lblNewLabel_1.setText(nome);
 	}
 }

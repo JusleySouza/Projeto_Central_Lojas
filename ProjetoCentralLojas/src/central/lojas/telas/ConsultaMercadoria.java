@@ -157,7 +157,7 @@ public class ConsultaMercadoria extends JFrame {
 				mercadoria.setPreco(Double.valueOf(novoPreco.getText()));
 				mercadoria.setTamanho(novoTamanho.getText());
 				
-				int i = estoque.atualizar(mercadoria);
+				estoque.atualizar(mercadoria);
 				limpar();
 			}
 		});

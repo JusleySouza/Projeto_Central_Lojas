@@ -34,7 +34,7 @@ public class ConsultaFuncionario extends JFrame {
 		});
 	}
 	
-	private JTextField nomeConsulta;
+	private JTextField nomeConsultaFuncionario;
 	private JTextField novoNomeFuncionario;
 	private JTextField novoTelefoneFuncionario;
 	private JTextField novoTelSecundarioFuncionario;
@@ -72,10 +72,10 @@ public class ConsultaFuncionario extends JFrame {
 		lblNewLabel.setBounds(10, 11, 216, 14);
 		novoCpf.add(lblNewLabel);
 		
-		nomeConsulta = new JTextField();
-		nomeConsulta.setBounds(10, 36, 625, 20);
-		novoCpf.add(nomeConsulta);
-		nomeConsulta.setColumns(10);
+		nomeConsultaFuncionario = new JTextField();
+		nomeConsultaFuncionario.setBounds(10, 36, 625, 20);
+		novoCpf.add(nomeConsultaFuncionario);
+		nomeConsultaFuncionario.setColumns(10);
 		
 		JButton btnProcurar = new JButton("Procurar");
 		btnProcurar.addActionListener(new ActionListener() {
@@ -257,6 +257,6 @@ public class ConsultaFuncionario extends JFrame {
 		novoTelSecundarioFuncionario.setText("");
 		novoCpfFuncionario.setText("");
 		novoRgFuncionario.setText("");
-		nomeConsulta.setText("");
+		nomeConsultaFuncionario.setText("");
 	}
 }

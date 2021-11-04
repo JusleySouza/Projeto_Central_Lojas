@@ -14,7 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import central.lojas.banco.Clientes;
+import central.lojas.banco.ClientesBanco;
 
 public class CadastroCliente extends JFrame {
 
@@ -201,7 +201,7 @@ public class CadastroCliente extends JFrame {
 					sexo="";
 				}
 				
-				Clientes cliente = new Clientes();
+				ClientesBanco cliente = new ClientesBanco();
 				int cadastro = cliente.cadastrar(nomeCliente, telefonePrincipal,
 						telsecundario, cpfCliente, RGCliente, emailCliente, 
 						ruaCliente, numero, bairroCliente, cidadeCliente, sexo);

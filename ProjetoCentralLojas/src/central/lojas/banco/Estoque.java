@@ -64,11 +64,11 @@ public class Estoque {
 		
 	}
 	
-	public int atualizar(Mercadoria mercadoria) {
+	public void atualizar(Mercadoria mercadoria) {
 		System.out.println(mercadoria.getId());
 		try {
 			sentenca = conect.createStatement();
-			registros = sentenca.executeUpdate("UPDATE mercadorias SET nome='"+mercadoria.getNome()+"'," +
+			sentenca.executeUpdate("UPDATE mercadorias SET nome='"+mercadoria.getNome()+"'," +
                     "lote='"+mercadoria.getLote()+"', quantidade_disponivel='"+mercadoria.getQuantidade()+"'," +
                     "preco='"+mercadoria.getPreco()+"', tamanho ='"+mercadoria.getTamanho()+"'  WHERE id='"+mercadoria.getId()+"'");
 			JOptionPane.showMessageDialog(null,"Alteração realizada com sucesso!!!","Sucesso",JOptionPane.INFORMATION_MESSAGE);
@@ -79,13 +79,12 @@ public class Estoque {
 			JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
 		}
 		
-		return (registros);	
 	}
 	
 	public void excluir(int id) {
 		try {
 			sentenca = conect.createStatement();
-			registros = sentenca.executeUpdate("DELETE FROM mercadorias  WHERE id='"+id+"'");
+			sentenca.executeUpdate("DELETE FROM mercadorias  WHERE id='"+id+"'");
 			JOptionPane.showMessageDialog(null,"Exclusão realizada com sucesso!!!","Sucesso",JOptionPane.INFORMATION_MESSAGE);
 		}
 		catch(SQLException ex)
