@@ -153,7 +153,7 @@ public class Caixa extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Codigo da Roupa");
 		lblNewLabel.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel.setBounds(26, 30, 140, 20);
+		lblNewLabel.setBounds(335, 11, 140, 20);
 		panel.add(lblNewLabel);
 		
 		valorR = new JTextField();
@@ -167,13 +167,13 @@ public class Caixa extends JFrame {
 		});
 		valorR.setHorizontalAlignment(SwingConstants.LEFT);
 		valorR.setText("0");
-		valorR.setBounds(26, 52, 140, 20);
+		valorR.setBounds(335, 52, 140, 20);
 		panel.add(valorR);
 		valorR.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Quantidade de pe\u00E7as");
 		lblNewLabel_1.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(26, 94, 151, 20);
+		lblNewLabel_1.setBounds(335, 94, 151, 20);
 		panel.add(lblNewLabel_1);
 		
 		quantidade = new JTextField();
@@ -187,19 +187,19 @@ public class Caixa extends JFrame {
 			}
 		});
 		quantidade.setText("0");
-		quantidade.setBounds(26, 119, 140, 20);
+		quantidade.setBounds(335, 135, 140, 20);
 		panel.add(quantidade);
 		quantidade.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Total a Pagar");
 		lblNewLabel_2.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_2.setBounds(373, 29, 140, 20);
+		lblNewLabel_2.setBounds(526, 11, 140, 20);
 		panel.add(lblNewLabel_2);
 		
 		todP = new JTextField();
 		todP.setText("0");
 		todP.setEditable(false);
-		todP.setBounds(373, 52, 140, 20);
+		todP.setBounds(526, 52, 140, 20);
 		panel.add(todP);
 		todP.setColumns(10);
 		
@@ -257,7 +257,7 @@ public class Caixa extends JFrame {
 		
 		JLabel lblNewLabel_3 = new JLabel("Valor Recebido");
 		lblNewLabel_3.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(373, 94, 151, 14);
+		lblNewLabel_3.setBounds(526, 97, 151, 14);
 		panel.add(lblNewLabel_3);
 		
 		dinC = new JTextField();
@@ -270,20 +270,20 @@ public class Caixa extends JFrame {
 			}
 		});
 		dinC.setText("0");
-		dinC.setBounds(373, 119, 140, 20);
+		dinC.setBounds(526, 135, 140, 20);
 		panel.add(dinC);
 		dinC.setColumns(10);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Troco");
 		lblNewLabel_3_1.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_3_1.setBounds(373, 172, 151, 14);
+		lblNewLabel_3_1.setBounds(526, 186, 151, 14);
 		panel.add(lblNewLabel_3_1);
 		
 		troco = new JTextField();
 		troco.setText("0");
 		troco.setEditable(false);
 		troco.setColumns(10);
-		troco.setBounds(373, 198, 140, 20);
+		troco.setBounds(526, 222, 140, 20);
 		panel.add(troco);
 		
 		JButton btnNewButton = new JButton("Calcular Troco");
@@ -301,7 +301,7 @@ public class Caixa extends JFrame {
 				troco.setText(String.valueOf(subtracao));
 			}
 		});
-		btnNewButton.setBounds(373, 247, 140, 23);
+		btnNewButton.setBounds(526, 276, 140, 23);
 		panel.add(btnNewButton);
 	}
 }

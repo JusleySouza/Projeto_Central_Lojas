@@ -77,7 +77,7 @@ public class ConsultaCliente extends JFrame {
 		btnSair.setFont(new Font("Dialog", Font.BOLD, 13));
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(DISPOSE_ON_CLOSE);
+				dispose();
 			}
 		});
 		btnSair.setBounds(698, 417, 109, 27);
