@@ -252,6 +252,11 @@ public class CadastroFuncionario extends JFrame {
 		contentPane.add(limpar);
 		
 		JButton sair = new JButton("Sair");
+		sair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		sair.setFont(new Font("Serif", Font.BOLD, 14));
 		sair.setBounds(505, 443, 155, 39);
 		contentPane.add(sair);

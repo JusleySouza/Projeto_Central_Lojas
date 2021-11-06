@@ -79,7 +79,7 @@ public class ConsultaFuncionario extends JFrame {
 		btnSair.setFont(new Font("Dialog", Font.BOLD, 13));
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(DISPOSE_ON_CLOSE);
+				dispose();
 			}
 		});
 		btnSair.setBounds(711, 417, 109, 27);

@@ -70,6 +70,11 @@ public class logincliente extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnNewButton_1.setBounds(310, 79, 89, 23);
 		contentPane.add(btnNewButton_1);
 		

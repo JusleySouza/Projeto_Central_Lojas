@@ -63,7 +63,7 @@ public class ConsultaMercadoria extends JFrame {
 		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 13));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(DISPOSE_ON_CLOSE);
+				dispose();
 			}
 		});
 		btnNewButton_1.setBounds(396, 391, 109, 23);

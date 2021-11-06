@@ -261,7 +261,7 @@ public class CadastroCliente extends JFrame {
 		JButton sair = new JButton("Sair");
 		sair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(DISPOSE_ON_CLOSE);
+				dispose();
 			}
 		});
 		sair.setFont(new Font("Serif", Font.BOLD, 14));

@@ -226,7 +226,7 @@ public class Caixa extends JFrame {
 				
 			}
 		});
-		Calcular.setBounds(44, 386, 144, 35);
+		Calcular.setBounds(44, 386, 130, 35);
 		panel.add(Calcular);
 		
 		JButton limpar = new JButton("Limpar");
@@ -237,7 +237,7 @@ public class Caixa extends JFrame {
 				valorR.setText("");
 			}
 		});
-		limpar.setBounds(279, 386, 144, 35);
+		limpar.setBounds(216, 386, 130, 35);
 		panel.add(limpar);
 		
 		JButton limparT = new JButton("Fechar venda");
@@ -252,7 +252,7 @@ public class Caixa extends JFrame {
 				
 			}
 		});
-		limparT.setBounds(508, 386, 140, 35);
+		limparT.setBounds(387, 386, 130, 35);
 		panel.add(limparT);
 		
 		JLabel lblNewLabel_3 = new JLabel("Valor Recebido");
@@ -303,5 +303,15 @@ public class Caixa extends JFrame {
 		});
 		btnNewButton.setBounds(526, 276, 140, 23);
 		panel.add(btnNewButton);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnSair.setFont(new Font("Dialog", Font.BOLD, 13));
+		btnSair.setBounds(549, 386, 103, 35);
+		panel.add(btnSair);
 	}
 }
