@@ -8,6 +8,4 @@ public class CentralLojasMain {
 		login inicio = new login();
 		inicio.interFace.setVisible(true);
 	}
-
-	
 }
