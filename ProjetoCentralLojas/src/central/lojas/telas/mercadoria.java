@@ -1,21 +1,19 @@
 package central.lojas.telas;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import java.awt.Font;
-import javax.swing.JLabel;
-import java.awt.Color;
-import java.awt.GridLayout;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import static javax.swing.JOptionPane.showMessageDialog;
+
+import central.lojas.banco.Estoque;
 
 public class mercadoria extends JFrame {
 
@@ -24,11 +22,11 @@ public class mercadoria extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textField_nome;
+	private JTextField textField_lote;
+	private JTextField textField_quantidade;
+	private JTextField textField_preco;
+	private JTextField textField_tamanho;
 
 	/**
 	 * Launch the application.
@@ -51,9 +49,9 @@ public class mercadoria extends JFrame {
 	 */
 	public String nome;
 	public String lote;
-	public String qnt;
-	public String prc;
-	public String tmh;
+	public int quantidade;
+	public double preco;
+	public String tamanho;
 	
 	public mercadoria() {
 		
@@ -68,6 +66,11 @@ public class mercadoria extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnNewButton_1.setBounds(298, 79, 101, 23);
 		contentPane.add(btnNewButton_1);
 		
@@ -81,10 +84,10 @@ public class mercadoria extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Century Schoolbook", Font.BOLD, 13));
 		
-		textField = new JTextField();
-		textField.setBounds(90, 34, 169, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textField_nome = new JTextField();
+		textField_nome.setBounds(90, 34, 169, 20);
+		contentPane.add(textField_nome);
+		textField_nome.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Quantidade Disponivel");
 		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -101,40 +104,63 @@ public class mercadoria extends JFrame {
 		lblNewLabel_5.setBounds(22, 211, 70, 14);
 		contentPane.add(lblNewLabel_5);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(90, 80, 169, 20);
-		contentPane.add(textField_1);
+		textField_lote = new JTextField();
+		textField_lote.setColumns(10);
+		textField_lote.setBounds(90, 80, 169, 20);
+		contentPane.add(textField_lote);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(186, 126, 73, 20);
-		contentPane.add(textField_2);
+		textField_quantidade = new JTextField();
+		textField_quantidade.setColumns(10);
+		textField_quantidade.setBounds(186, 126, 73, 20);
+		contentPane.add(textField_quantidade);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(90, 167, 86, 20);
-		contentPane.add(textField_3);
+		textField_preco = new JTextField();
+		textField_preco.setColumns(10);
+		textField_preco.setBounds(90, 167, 86, 20);
+		contentPane.add(textField_preco);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(90, 209, 86, 20);
-		contentPane.add(textField_4);
+		textField_tamanho = new JTextField();
+		textField_tamanho.setColumns(10);
+		textField_tamanho.setBounds(90, 209, 86, 20);
+		contentPane.add(textField_tamanho);
 		
 		JButton btnNewButton_1_1 = new JButton("Adicionar Item");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				nome = textField.getText();
-				lote = textField_1.getText();
-				qnt = textField_2.getText();
-				prc = textField_3.getText();
-				tmh = textField_4.getText();
+				nome = textField_nome.getText();
+				lote = textField_lote.getText();
+				quantidade = Integer.valueOf(textField_quantidade.getText());
+				preco = Double.valueOf(textField_preco.getText());
+				tamanho = textField_tamanho.getText();
 				
-				showMessageDialog(null, "Item Adicionado!");
+
+				Estoque estoque = new Estoque();
+				int cadastro = estoque.cadastrar(nome, lote,
+						quantidade, preco, tamanho);
+			
+				if(cadastro!=0)
+					{
+						JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!!!","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+						textField_nome.setText("");
+						textField_lote.setText("");
+						textField_quantidade.setText("");
+						textField_preco.setText("");
+						textField_tamanho.setText("");
+						
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null,"Erro para realizar o cadastro!!!","Erro",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				
+				
+			{
 				
 			}
 		});
+				
 		btnNewButton_1_1.setBounds(298, 33, 101, 23);
 		contentPane.add(btnNewButton_1_1);
 	}
