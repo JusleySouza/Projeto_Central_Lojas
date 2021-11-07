@@ -1,14 +1,14 @@
 package central.lojas.telas;
 
+import java.awt.Button;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,10 +16,21 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import central.lojas.banco.ClientesBanco;
+import central.lojas.banco.Estoque;
+import central.lojas.banco.Profissionais;
+import central.lojas.dto.Cliente;
+import central.lojas.dto.Funcionario;
+import central.lojas.dto.Mercadoria;
 
 public class Caixa extends JFrame {
 
@@ -27,11 +38,11 @@ public class Caixa extends JFrame {
 	
 	
 	private JPanel contentPane;
-	private JTextField valorR;
+	private JTextField nomeConsulta;
+	private JTextField nome;
+	private JTextField totalFinal;
+	private JTextField preco;
 	private JTextField quantidade;
-	private JTextField todP;
-	private JTextField dinC;
-	private JTextField troco;
 	private CadastroCliente cad;
 	private logincliente logcli;
 	private mercadoria additm;
@@ -39,6 +50,23 @@ public class Caixa extends JFrame {
 	private ConsultaMercadoria editarExcluir;
 	private ConsultaFuncionario consultafunc;
 	private ConsultaCliente consultacli;
+	private JTable tabela;
+	private DefaultTableModel modelo;
+	private Double totalVenda = 0.00;
+	
+	Estoque estoque = new Estoque();
+	Mercadoria mercadoria = new Mercadoria();
+	private JTextField nomeCliente;
+	
+	ClientesBanco clientebanco = new ClientesBanco();
+	Cliente cliente = new Cliente();
+	private JTextField nomeFuncionario;
+	
+	Profissionais profissionais = new Profissionais();
+	Funcionario funcionario = new Funcionario();
+
+	
+
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -68,7 +96,7 @@ public class Caixa extends JFrame {
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setTitle("Caixa");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 723, 518);
+		setBounds(100, 100, 723, 565);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -146,163 +174,110 @@ public class Caixa extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 707, 457);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JPanel telaVendas = new JPanel();
+		telaVendas.setBounds(0, 0, 707, 504);
+		contentPane.add(telaVendas);
+		telaVendas.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Codigo da Roupa");
-		lblNewLabel.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel.setBounds(335, 11, 140, 20);
-		panel.add(lblNewLabel);
+		JLabel lblNewLabel = new JLabel("Buscar Mercadoria:");
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblNewLabel.setBounds(21, 100, 140, 20);
+		telaVendas.add(lblNewLabel);
 		
-		valorR = new JTextField();
-		valorR.addFocusListener(new FocusAdapter() {
-			public void focusGained(FocusEvent e) {
-				if (valorR.getText().equals("0"));
-				{
-					valorR.setText("");
-				}
-			}
-		});
-		valorR.setHorizontalAlignment(SwingConstants.LEFT);
-		valorR.setText("0");
-		valorR.setBounds(335, 52, 140, 20);
-		panel.add(valorR);
-		valorR.setColumns(10);
+		nomeConsulta = new JTextField();
+		nomeConsulta.setEnabled(false);
+		nomeConsulta.setHorizontalAlignment(SwingConstants.LEFT);
+		nomeConsulta.setBounds(21, 131, 130, 20);
+		telaVendas.add(nomeConsulta);
+		nomeConsulta.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Quantidade de pe\u00E7as");
-		lblNewLabel_1.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(335, 94, 151, 20);
-		panel.add(lblNewLabel_1);
+		JLabel lblNewLabel_1 = new JLabel("Nome do Item:");
+		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblNewLabel_1.setBounds(21, 185, 130, 22);
+		telaVendas.add(lblNewLabel_1);
 		
-		quantidade = new JTextField();
-		quantidade.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (quantidade.getText().equals("0"));
-				{
-					quantidade.setText("");
-				}
-			}
-		});
-		quantidade.setText("0");
-		quantidade.setBounds(335, 135, 140, 20);
-		panel.add(quantidade);
-		quantidade.setColumns(10);
+		nome = new JTextField();
+		nome.setEnabled(false);
+		nome.setEditable(false);
+		nome.setBounds(21, 218, 130, 20);
+		telaVendas.add(nome);
+		nome.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Total a Pagar");
+		JLabel lblNewLabel_2 = new JLabel("Total a Pagar:");
 		lblNewLabel_2.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_2.setBounds(526, 11, 140, 20);
-		panel.add(lblNewLabel_2);
+		lblNewLabel_2.setBounds(240, 401, 103, 20);
+		telaVendas.add(lblNewLabel_2);
 		
-		todP = new JTextField();
-		todP.setText("0");
-		todP.setEditable(false);
-		todP.setBounds(526, 52, 140, 20);
-		panel.add(todP);
-		todP.setColumns(10);
+		totalFinal = new JTextField();
+		totalFinal.setEditable(false);
+		totalFinal.setBounds(353, 403, 329, 20);
+		telaVendas.add(totalFinal);
 		
-		JButton Calcular = new JButton("Adicionar Item");
-		Calcular.setFont(new Font("Serif", Font.BOLD, 14));
-		Calcular.addActionListener(new ActionListener() {
+		JButton AdicionarItem = new JButton("Adicionar Item");
+		AdicionarItem.setEnabled(false);
+		AdicionarItem.setFont(new Font("Serif", Font.BOLD, 14));
+		AdicionarItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String preco, quant, val;
-				double soma, multiplicacao;
+				String quantidadeItem;
+				double totalItem;
+				quantidadeItem = quantidade.getText();
+				totalItem = mercadoria.getPreco() * Double.parseDouble(quantidadeItem);
+				modelo.addRow(new Object[] {mercadoria.getNome(),quantidadeItem, mercadoria.getPreco(),new DecimalFormat("0.##").format(totalItem)});
 				
-				preco = valorR.getText();
-				quant = quantidade.getText();
-				val = todP.getText();
-			
+				totalVenda += totalItem;
+				totalFinal.setText(""+new DecimalFormat("0.##").format(totalVenda));
+		
 				
-				multiplicacao = Double.parseDouble(preco) * Double.parseDouble(quant);
-				todP.setText(String.valueOf(multiplicacao));
-				
-				soma = Double.parseDouble(val) + multiplicacao;
-				todP.setText(String.valueOf(soma));
-				
-				quantidade.setText("");
-				valorR.setText("");
-				
+				limpar();
 			}
 		});
-		Calcular.setBounds(44, 386, 130, 35);
-		panel.add(Calcular);
+		AdicionarItem.setBounds(21, 445, 130, 35);
+		telaVendas.add(AdicionarItem);
 		
 		JButton limpar = new JButton("Limpar");
+		limpar.setEnabled(false);
 		limpar.setFont(new Font("Serif", Font.BOLD, 14));
 		limpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				quantidade.setText("");
-				valorR.setText("");
+				nome.setText("");
+				nomeConsulta.setText("");
 			}
 		});
-		limpar.setBounds(216, 386, 130, 35);
-		panel.add(limpar);
+		limpar.setBounds(240, 445, 120, 35);
+		telaVendas.add(limpar);
 		
-		JButton limparT = new JButton("Fechar venda");
-		limparT.setFont(new Font("Serif", Font.BOLD, 14));
-		limparT.addActionListener(new ActionListener() {
+		JButton fecharVenda = new JButton("Fechar venda");
+		fecharVenda.setEnabled(false);
+		fecharVenda.setFont(new Font("Serif", Font.BOLD, 14));
+		fecharVenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				troco.setText("0");
-				todP.setText("0");
-				quantidade.setText("0");
-				valorR.setText("0");
-				dinC.setText("0");
-				
+				limpar();
 			}
 		});
-		limparT.setBounds(387, 386, 130, 35);
-		panel.add(limparT);
+		fecharVenda.setBounds(411, 445, 120, 35);
+		telaVendas.add(fecharVenda);
 		
-		JLabel lblNewLabel_3 = new JLabel("Valor Recebido");
+		JLabel lblNewLabel_3 = new JLabel("Pre\u00E7o:");
 		lblNewLabel_3.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(526, 97, 151, 14);
-		panel.add(lblNewLabel_3);
+		lblNewLabel_3.setBounds(21, 249, 151, 20);
+		telaVendas.add(lblNewLabel_3);
 		
-		dinC = new JTextField();
-		dinC.addFocusListener(new FocusAdapter() {
-			public void focusGained(FocusEvent e) {
-				if (dinC.getText().equals("0"));
-				{
-					dinC.setText("");
-				}
-			}
-		});
-		dinC.setText("0");
-		dinC.setBounds(526, 135, 140, 20);
-		panel.add(dinC);
-		dinC.setColumns(10);
+		preco = new JTextField();
+		preco.setEnabled(false);
+		preco.setEditable(false);
+		preco.setBounds(21, 280, 130, 20);
+		telaVendas.add(preco);
+		preco.setColumns(10);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Troco");
+		JLabel lblNewLabel_3_1 = new JLabel("Quantidade:");
 		lblNewLabel_3_1.setFont(new Font("Serif", Font.BOLD, 14));
-		lblNewLabel_3_1.setBounds(526, 186, 151, 14);
-		panel.add(lblNewLabel_3_1);
+		lblNewLabel_3_1.setBounds(21, 311, 151, 20);
+		telaVendas.add(lblNewLabel_3_1);
 		
-		troco = new JTextField();
-		troco.setText("0");
-		troco.setEditable(false);
-		troco.setColumns(10);
-		troco.setBounds(526, 222, 140, 20);
-		panel.add(troco);
-		
-		JButton btnNewButton = new JButton("Calcular Troco");
-		btnNewButton.setFont(new Font("Serif", Font.BOLD, 14));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String  troc;
-				double subtracao, soma;
-				
-				troc = dinC.getText();
-				soma = Double.parseDouble(todP.getText());
-				
-				
-				subtracao = soma - Double.parseDouble(troc);
-				troco.setText(String.valueOf(subtracao));
-			}
-		});
-		btnNewButton.setBounds(526, 276, 140, 23);
-		panel.add(btnNewButton);
+		quantidade = new JTextField();
+		quantidade.setEnabled(false);
+		quantidade.setBounds(21, 342, 130, 20);
+		telaVendas.add(quantidade);
 		
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
@@ -311,7 +286,138 @@ public class Caixa extends JFrame {
 			}
 		});
 		btnSair.setFont(new Font("Dialog", Font.BOLD, 13));
-		btnSair.setBounds(549, 386, 103, 35);
-		panel.add(btnSair);
+		btnSair.setBounds(572, 445, 110, 35);
+		telaVendas.add(btnSair);
+		
+		modelo = new DefaultTableModel(); 
+		modelo.addColumn("Nome");
+		modelo.addColumn("Quantidade");
+		modelo.addColumn("Preço Unitário");
+		modelo.addColumn("Subtotal");
+		
+		tabela = new JTable(modelo);
+		JScrollPane scrollPane = new JScrollPane(tabela);
+		scrollPane.setBounds(240, 93, 446, 285);
+		telaVendas.add(scrollPane);
+		
+		Button buscarMercadoria = new Button("Buscar");
+		buscarMercadoria.setEnabled(false);
+		buscarMercadoria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nomeConsulta.getText();
+				mercadoria = estoque.consulta(nomeConsulta.getText());
+				limpar();
+				
+				nome.setText(mercadoria.getNome());
+				preco.setText(""+mercadoria.getPreco());
+				
+				nomeConsulta.setText("");
+			}
+		});
+		buscarMercadoria.setBounds(170, 131, 49, 22);
+		telaVendas.add(buscarMercadoria);
+		
+		Button validarFuncionario = new Button("Validar");
+		validarFuncionario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				funcionario = profissionais.consulta(nomeFuncionario.getText());
+				if ((nomeFuncionario.getText().equals(funcionario.getNome()))) {
+					
+					JOptionPane.showMessageDialog(null,"Funcionario encontrado!!!","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+					nomeConsulta.setEnabled(true);
+					buscarMercadoria.setEnabled(true);
+					nome.setEnabled(true);
+					preco.setEnabled(true);
+					quantidade.setEnabled(true);
+					totalFinal.setEnabled(true);
+					AdicionarItem.setEnabled(true);
+					limpar.setEnabled(true);
+					fecharVenda.setEnabled(true);
+					
+					
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Funcionario Inexistente!!!","Erro",JOptionPane.INFORMATION_MESSAGE);
+					nomeConsulta.setEnabled(false);
+					buscarMercadoria.setEnabled(false);
+					nome.setEnabled(false);
+					preco.setEnabled(false);
+					quantidade.setEnabled(false);
+					totalFinal.setEnabled(false);
+					AdicionarItem.setEnabled(false);
+					limpar.setEnabled(false);
+					fecharVenda.setEnabled(false);
+				}
+				
+			}
+		});
+		validarFuncionario.setEnabled(false);
+		validarFuncionario.setBounds(606, 54, 76, 22);
+		telaVendas.add(validarFuncionario);
+		
+		
+		
+		Button validarCliente = new Button("Validar");
+		validarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				cliente = clientebanco.consulta(nomeCliente.getText());
+				if ((nomeCliente.getText().equals(cliente.getNome()))) {
+					
+					JOptionPane.showMessageDialog(null,"Cliente encontrado!!!","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+					nomeFuncionario.setEnabled(true);
+					validarFuncionario.setEnabled(true);	
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Cliente Inexistente!!!","Erro",JOptionPane.INFORMATION_MESSAGE);
+					nomeFuncionario.setEnabled(false);
+					validarFuncionario.setEnabled(false);
+					nomeConsulta.setEnabled(false);
+					buscarMercadoria.setEnabled(false);
+					nome.setEnabled(false);
+					preco.setEnabled(false);
+					quantidade.setEnabled(false);
+					totalFinal.setEnabled(false);
+					AdicionarItem.setEnabled(false);
+					limpar.setEnabled(false);
+					fecharVenda.setEnabled(false);
+				}
+				
+			}
+		});
+		validarCliente.setBounds(610, 10, 76, 22);
+		telaVendas.add(validarCliente);
+		
+		JLabel lblNewLabel_4 = new JLabel("Cliente:");
+		lblNewLabel_4.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblNewLabel_4.setBounds(240, 8, 68, 22);
+		telaVendas.add(lblNewLabel_4);
+		
+		nomeCliente = new JTextField();
+		nomeCliente.setBounds(336, 11, 241, 20);
+		telaVendas.add(nomeCliente);
+		nomeCliente.setColumns(10);
+		
+		
+		
+		JLabel lblNewLabel_6 = new JLabel("Funcionario:");
+		lblNewLabel_6.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblNewLabel_6.setBounds(240, 54, 90, 14);
+		telaVendas.add(lblNewLabel_6);
+		
+		nomeFuncionario = new JTextField();
+		nomeFuncionario.setEnabled(false);
+		nomeFuncionario.setBounds(336, 54, 241, 20);
+		telaVendas.add(nomeFuncionario);
+		nomeFuncionario.setColumns(10);
+
+	}
+	
+	public void limpar() {
+		nomeConsulta.setText("");
+		nome.setText("");
+		preco.setText("");
+		quantidade.setText("");
 	}
 }
