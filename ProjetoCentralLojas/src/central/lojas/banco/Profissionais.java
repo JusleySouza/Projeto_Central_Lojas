@@ -67,13 +67,10 @@ public class Profissionais {
 				JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
 			}
 			
-			System.out.println(funcionario);
-			
 			return funcionario;
 		}
 		
 		public void atualizar(Funcionario funcionario) {
-			System.out.println(funcionario.getNome());
 			try {
 				sentenca = conect.createStatement();
 				registros = sentenca.executeUpdate("UPDATE profissionais SET nome='"+funcionario.getNome()+"'," +

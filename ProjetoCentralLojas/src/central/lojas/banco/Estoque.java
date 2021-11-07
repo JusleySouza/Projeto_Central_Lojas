@@ -58,14 +58,11 @@ public class Estoque {
 			JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
 		}
 		
-		System.out.println(mercadoria);
-		
 		return mercadoria;
 		
 	}
 	
 	public void atualizar(Mercadoria mercadoria) {
-		System.out.println(mercadoria.getId());
 		try {
 			sentenca = conect.createStatement();
 			sentenca.executeUpdate("UPDATE mercadorias SET nome='"+mercadoria.getNome()+"'," +

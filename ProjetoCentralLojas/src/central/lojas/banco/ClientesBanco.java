@@ -65,8 +65,6 @@ public class ClientesBanco {
 			JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
 		}
 		
-		System.out.println(cliente);
-		
 		return cliente;
 		
 	}
@@ -101,10 +99,8 @@ public class ClientesBanco {
 			JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
 		}
 		
-	}
-
-		
-	}
+	}	
+}
 
 		
 	
