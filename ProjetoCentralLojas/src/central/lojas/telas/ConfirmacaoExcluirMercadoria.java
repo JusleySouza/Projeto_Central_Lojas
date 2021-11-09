@@ -22,6 +22,7 @@ public class ConfirmacaoExcluirMercadoria extends JFrame {
 
 	
 	public ConfirmacaoExcluirMercadoria(int Id, String nomeProduto) {
+		setTitle("Mercadoria");
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,7 +46,7 @@ public class ConfirmacaoExcluirMercadoria extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));
-		btnNewButton.setBounds(165, 81, 89, 33);
+		btnNewButton.setBounds(156, 81, 98, 33);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
@@ -55,7 +56,7 @@ public class ConfirmacaoExcluirMercadoria extends JFrame {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		btnNewButton_1.setBounds(23, 81, 89, 34);
+		btnNewButton_1.setBounds(23, 81, 98, 34);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel nome = new JLabel("New label");

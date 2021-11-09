@@ -4,12 +4,17 @@ import java.awt.Button;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URL;
 import java.text.DecimalFormat;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -83,8 +88,9 @@ public class Caixa extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws IOException 
 	 */
-	public Caixa() {
+	public Caixa() throws IOException {
 		logcli = new logincliente();
 		cad = new CadastroCliente();
 		cadx = new CadastroFuncionario();
@@ -98,11 +104,14 @@ public class Caixa extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 723, 565);
 		
+		URL url = getClass().getResource("./imagens/Central1.png");
+		Image img = ImageIO.read(url);
+		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Clientes");
-		menuBar.add(mnNewMenu);
+		JMenu mnCliente = new JMenu("Clientes");
+		menuBar.add(mnCliente);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Cadastramento Cliente");
 		mntmNewMenuItem.addMouseListener(new MouseAdapter() {
@@ -110,14 +119,7 @@ public class Caixa extends JFrame {
 				cad.setVisible(true);
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem);
-		
-		JMenuItem mntmNewMenuItem1 = new JMenuItem("Login Cliente");
-		mntmNewMenuItem1.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				logcli.setVisible(true);
-			}
-		});
+		mnCliente.add(mntmNewMenuItem);
 		
 		JMenuItem mntmEditarExcluirCliente = new JMenuItem("Editar/Excluir Item (Cliente)");
 		mntmEditarExcluirCliente.addMouseListener(new MouseAdapter() {
@@ -125,11 +127,10 @@ public class Caixa extends JFrame {
 				consultacli.setVisible(true);
 			}
 		});
-		mnNewMenu.add(mntmEditarExcluirCliente);
-		mnNewMenu.add(mntmNewMenuItem1);
+		mnCliente.add(mntmEditarExcluirCliente);
 		
-		JMenu mnNewMenu_1 = new JMenu("Funcionarios");
-		menuBar.add(mnNewMenu_1);
+		JMenu mnFuncionario = new JMenu("Funcionarios");
+		menuBar.add(mnFuncionario);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Cadastramento Funcionario");
 		mntmNewMenuItem_2.addMouseListener(new MouseAdapter() {
@@ -137,7 +138,7 @@ public class Caixa extends JFrame {
 				cadx.setVisible(true);
 			}
 		});
-		mnNewMenu_1.add(mntmNewMenuItem_2);
+		mnFuncionario.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Editar/Excluir Funcionario");
 		mntmNewMenuItem_3.addMouseListener(new MouseAdapter() {
@@ -145,12 +146,12 @@ public class Caixa extends JFrame {
 				consultafunc.setVisible(true);
 			}
 		});
-		mnNewMenu_1.add(mntmNewMenuItem_3);
+		mnFuncionario.add(mntmNewMenuItem_3);
 		
 		
 		
-		JMenu mnNewMenu1 = new JMenu("Mercadorias");
-		menuBar.add(mnNewMenu1);
+		JMenu mnMercadoria = new JMenu("Mercadorias");
+		menuBar.add(mnMercadoria);
 		
 		JMenuItem mntmNewMenuItem2 = new JMenuItem("Adicionar Item");
 		mntmNewMenuItem2.addMouseListener(new MouseAdapter() {
@@ -158,7 +159,7 @@ public class Caixa extends JFrame {
 				additm.setVisible(true);
 			}
 		});
-		mnNewMenu1.add(mntmNewMenuItem2);
+		mnMercadoria.add(mntmNewMenuItem2);
 		
 		JMenuItem editarExcluirItem = new JMenuItem("Alterar/Excluir Item");
 		editarExcluirItem.addMouseListener(new MouseAdapter() {
@@ -167,7 +168,22 @@ public class Caixa extends JFrame {
 			}
 		});
 
-		mnNewMenu1.add(editarExcluirItem);
+		mnMercadoria.add(editarExcluirItem);
+		
+		JMenu mnNewMenu_2 = new JMenu("Relatorios");
+		menuBar.add(mnNewMenu_2);
+		
+		JMenuItem mntmClientes = new JMenuItem("Clientes");
+		mnNewMenu_2.add(mntmClientes);
+		
+		JMenuItem mntmFuncionarios = new JMenuItem("Funcionarios");
+		mnNewMenu_2.add(mntmFuncionarios);
+		
+		JMenuItem mntmMercadorias = new JMenuItem("Mercadorias");
+		mnNewMenu_2.add(mntmMercadorias);
+		
+		JMenuItem mntmvendas = new JMenuItem("Vendas");
+		mnNewMenu_2.add(mntmvendas);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -241,6 +257,8 @@ public class Caixa extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				nome.setText("");
 				nomeConsulta.setText("");
+				preco.setText("");
+				quantidade.setText("");
 			}
 		});
 		limpar.setBounds(240, 445, 120, 35);
@@ -292,7 +310,7 @@ public class Caixa extends JFrame {
 		modelo = new DefaultTableModel(); 
 		modelo.addColumn("Nome");
 		modelo.addColumn("Quantidade");
-		modelo.addColumn("Preço Unitário");
+		modelo.addColumn("Preco Unitario");
 		modelo.addColumn("Subtotal");
 		
 		tabela = new JTable(modelo);
@@ -411,6 +429,12 @@ public class Caixa extends JFrame {
 		nomeFuncionario.setBounds(336, 54, 241, 20);
 		telaVendas.add(nomeFuncionario);
 		nomeFuncionario.setColumns(10);
+		
+		JLabel logo = new JLabel("New label");
+		logo.setHorizontalAlignment(SwingConstants.LEFT);
+		logo.setBounds(10, 5, 209, 84);
+		telaVendas.add(logo);
+		logo.setIcon(new ImageIcon(img));
 
 	}
 	

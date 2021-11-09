@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import central.lojas.banco.ClientesBanco;
+import java.awt.Color;
 
 public class CadastroCliente extends JFrame {
 
@@ -43,6 +44,7 @@ public class CadastroCliente extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 717, 556);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -54,7 +56,7 @@ public class CadastroCliente extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("CADASTRAMENTO DE CLIENTES");
 		lblNewLabel_1.setFont(new Font("Serif", Font.BOLD, 19));
-		lblNewLabel_1.setBounds(185, 11, 319, 23);
+		lblNewLabel_1.setBounds(176, 11, 347, 23);
 		contentPane.add(lblNewLabel_1);
 		
 		nome = new JTextField();
@@ -219,8 +221,7 @@ public class CadastroCliente extends JFrame {
 						numeroC.setText("");
 						bairro.setText("");
 						cidade.setText("");
-						sexoF.setSelected(false);
-						sexoM.setSelected(false);
+						grupo1.clearSelection();
 						
 					}
 					else
@@ -251,7 +252,8 @@ public class CadastroCliente extends JFrame {
 				email.setText("");
 				bairro.setText("");
 				numeroC.setText("");
-				
+				grupo1.clearSelection();
+			
 			}
 		});
 		limpar.setFont(new Font("Serif", Font.BOLD, 14));

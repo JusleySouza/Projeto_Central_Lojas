@@ -228,6 +228,7 @@ public class CadastroFuncionario extends JFrame {
 						sexoF.setSelected(false);
 						sexoM.setSelected(false);
 						cargoProfissional.setText("");
+						escolha.clearSelection();
 						
 					}
 					else
@@ -247,6 +248,24 @@ public class CadastroFuncionario extends JFrame {
 		contentPane.add(cadastrar);
 		
 		JButton limpar = new JButton("Limpar");
+		limpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nome.setText("");
+				telefone.setText("");
+				telsecund.setText("");
+				cpf.setText("");
+				RG.setText("");
+				email.setText("");
+				rua.setText("");
+				numeroC.setText("");
+				bairro.setText("");
+				cidade.setText("");
+				sexoF.setSelected(false);
+				sexoM.setSelected(false);
+				cargoProfissional.setText("");
+				escolha.clearSelection();
+			}
+		});
 		limpar.setFont(new Font("Serif", Font.BOLD, 14));
 		limpar.setBounds(269, 443, 155, 39);
 		contentPane.add(limpar);

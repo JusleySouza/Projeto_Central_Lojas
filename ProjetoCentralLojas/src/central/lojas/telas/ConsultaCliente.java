@@ -49,6 +49,8 @@ public class ConsultaCliente extends JFrame {
 	ClientesBanco clientebanco = new ClientesBanco();
 	Cliente cliente = new Cliente();
 	
+	ButtonGroup escolha = new ButtonGroup();
+	
 	public ConsultaCliente() {
 		setTitle("Clientes");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -58,7 +60,6 @@ public class ConsultaCliente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ButtonGroup escolha = new ButtonGroup();
 		
 		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
 		rdbtnMasculino.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -302,6 +303,7 @@ public class ConsultaCliente extends JFrame {
 		novoNumeroCliente.setText("");
 		novoBairroCliente.setText("");
 		novaCidadeCliente.setText("");
+		escolha.clearSelection();
 		
 	}
 }

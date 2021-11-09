@@ -49,6 +49,8 @@ public class ConsultaFuncionario extends JFrame {
 	
 	Profissionais profissionais = new Profissionais();
 	Funcionario funcionario = new Funcionario();
+	
+	ButtonGroup escolha = new ButtonGroup();
 
 	
 	public ConsultaFuncionario() {
@@ -60,7 +62,7 @@ public class ConsultaFuncionario extends JFrame {
 		setContentPane(novoCpf);
 		novoCpf.setLayout(null);
 		
-		ButtonGroup escolha = new ButtonGroup();
+		
 		
 		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
 		rdbtnMasculino.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -319,5 +321,7 @@ public class ConsultaFuncionario extends JFrame {
 		novoBairroFuncionario.setText("");
 		novaCidadeFuncionario.setText("");
 		novoCargo.setText("");
+		escolha.clearSelection();
+		
 	}
 }
