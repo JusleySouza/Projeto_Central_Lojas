@@ -90,4 +90,17 @@ public class Estoque {
 		}
 		
 	}
+	
+	public void subtrairMercadoria(Mercadoria mercadoria) {
+		try {
+			sentenca = conect.createStatement();
+			sentenca.executeUpdate("UPDATE mercadorias SET quantidade_disponivel='"+mercadoria.getQuantidade()+"' "
+					+ " WHERE id='"+mercadoria.getId()+"'");
+		}
+		catch(SQLException ex)
+		{
+			JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+		}	
+		
+	}
 }

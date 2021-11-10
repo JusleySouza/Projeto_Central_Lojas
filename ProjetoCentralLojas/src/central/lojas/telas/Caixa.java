@@ -33,9 +33,13 @@ import javax.swing.table.DefaultTableModel;
 import central.lojas.banco.ClientesBanco;
 import central.lojas.banco.Estoque;
 import central.lojas.banco.Profissionais;
+import central.lojas.banco.VendaUnitaria;
+import central.lojas.banco.Vendas;
 import central.lojas.dto.Cliente;
 import central.lojas.dto.Funcionario;
 import central.lojas.dto.Mercadoria;
+import central.lojas.dto.VendaUnitObj;
+import central.lojas.dto.VendasObj;
 
 public class Caixa extends JFrame {
 
@@ -58,6 +62,7 @@ public class Caixa extends JFrame {
 	private JTable tabela;
 	private DefaultTableModel modelo;
 	private Double totalVenda = 0.00;
+	private FinalizarVenda finaliza;
 	
 	Estoque estoque = new Estoque();
 	Mercadoria mercadoria = new Mercadoria();
@@ -70,8 +75,12 @@ public class Caixa extends JFrame {
 	Profissionais profissionais = new Profissionais();
 	Funcionario funcionario = new Funcionario();
 
+	VendaUnitaria vendaUni = new VendaUnitaria();
+	VendaUnitObj vendaUnOb = new VendaUnitObj();
 	
-
+	VendasObj vendaobj = new VendasObj();
+	Vendas vendasfin = new Vendas();
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -98,6 +107,7 @@ public class Caixa extends JFrame {
 		editarExcluir = new ConsultaMercadoria();
 		consultafunc = new ConsultaFuncionario();
 		consultacli = new ConsultaCliente();
+		
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setTitle("Caixa");
@@ -238,7 +248,18 @@ public class Caixa extends JFrame {
 				double totalItem;
 				quantidadeItem = quantidade.getText();
 				totalItem = mercadoria.getPreco() * Double.parseDouble(quantidadeItem);
-				modelo.addRow(new Object[] {mercadoria.getNome(),quantidadeItem, mercadoria.getPreco(),new DecimalFormat("0.##").format(totalItem)});
+				modelo.addRow(new Object[] {mercadoria.getNome(),quantidadeItem, mercadoria.getPreco(),
+						new DecimalFormat("0.##").format(totalItem)});
+				
+				vendaUnOb.setQuantidade(Integer.valueOf(quantidadeItem));
+				vendaUnOb.setIdVenda(vendaobj.getId());
+				vendaUnOb.setIdMercadoria(mercadoria.getId());
+				vendaUnOb.setTotalPedido(totalItem);
+				vendaUni.cadastrar(vendaUnOb);
+				mercadoria.setQuantidade(mercadoria.getQuantidade() - Integer.valueOf(quantidadeItem));
+				estoque.subtrairMercadoria(mercadoria);
+				
+				vendaobj.setTotal(vendaobj.getTotal() + totalItem);
 				
 				totalVenda += totalItem;
 				totalFinal.setText(""+new DecimalFormat("0.##").format(totalVenda));
@@ -264,12 +285,49 @@ public class Caixa extends JFrame {
 		limpar.setBounds(240, 445, 120, 35);
 		telaVendas.add(limpar);
 		
+		Button buscarMercadoria = new Button("Buscar");
+		buscarMercadoria.setEnabled(false);
+		buscarMercadoria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nomeConsulta.getText();
+				mercadoria = estoque.consulta(nomeConsulta.getText());
+				limpar();
+				
+				nome.setText(mercadoria.getNome());
+				preco.setText(""+mercadoria.getPreco());
+				
+				nomeConsulta.setText("");
+			}
+		});
+		
+		Button validarFuncionario = new Button("Validar");
+		
 		JButton fecharVenda = new JButton("Fechar venda");
 		fecharVenda.setEnabled(false);
 		fecharVenda.setFont(new Font("Serif", Font.BOLD, 14));
 		fecharVenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				finaliza = new FinalizarVenda(vendaobj);
+				finaliza.setVisible(true);
 				limpar();
+				
+				nomeCliente.setText("");
+				nomeFuncionario.setText("");
+				nomeFuncionario.setEnabled(false);
+				validarFuncionario.setEnabled(false);
+				nomeConsulta.setEnabled(false);
+				buscarMercadoria.setEnabled(false);
+				nome.setEnabled(false);
+				preco.setEnabled(false);
+				quantidade.setEnabled(false);
+				totalFinal.setEnabled(false);
+				AdicionarItem.setEnabled(false);
+				limpar.setEnabled(false);
+				fecharVenda.setEnabled(false);
+				int numRows = modelo.getRowCount();
+				for(int i = 0; i <= numRows; i++) {
+					modelo.removeRow(i);
+				}
 			}
 		});
 		fecharVenda.setBounds(411, 445, 120, 35);
@@ -318,24 +376,11 @@ public class Caixa extends JFrame {
 		scrollPane.setBounds(240, 93, 446, 285);
 		telaVendas.add(scrollPane);
 		
-		Button buscarMercadoria = new Button("Buscar");
-		buscarMercadoria.setEnabled(false);
-		buscarMercadoria.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				nomeConsulta.getText();
-				mercadoria = estoque.consulta(nomeConsulta.getText());
-				limpar();
-				
-				nome.setText(mercadoria.getNome());
-				preco.setText(""+mercadoria.getPreco());
-				
-				nomeConsulta.setText("");
-			}
-		});
+		
 		buscarMercadoria.setBounds(170, 131, 49, 22);
 		telaVendas.add(buscarMercadoria);
 		
-		Button validarFuncionario = new Button("Validar");
+		
 		validarFuncionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -352,6 +397,8 @@ public class Caixa extends JFrame {
 					AdicionarItem.setEnabled(true);
 					limpar.setEnabled(true);
 					fecharVenda.setEnabled(true);
+					
+					vendaobj = vendasfin.cadastrar(funcionario.getCpf(), cliente.getCpf());
 					
 					
 				}
@@ -443,5 +490,6 @@ public class Caixa extends JFrame {
 		nome.setText("");
 		preco.setText("");
 		quantidade.setText("");
+		
 	}
 }
