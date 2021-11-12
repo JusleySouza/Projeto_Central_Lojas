@@ -63,6 +63,9 @@ public class Caixa extends JFrame {
 	private DefaultTableModel modelo;
 	private Double totalVenda = 0.00;
 	private FinalizarVenda finaliza;
+	private RelatorioCliente relatorioCliente;
+	private RelatorioFuncionario relatorioFuncionario;
+	private RelatorioMercadoria relatorioMercadoria;
 	
 	Estoque estoque = new Estoque();
 	Mercadoria mercadoria = new Mercadoria();
@@ -95,10 +98,7 @@ public class Caixa extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 * @throws IOException 
-	 */
+	
 	public Caixa() throws IOException {
 		logcli = new logincliente();
 		cad = new CadastroCliente();
@@ -107,6 +107,9 @@ public class Caixa extends JFrame {
 		editarExcluir = new ConsultaMercadoria();
 		consultafunc = new ConsultaFuncionario();
 		consultacli = new ConsultaCliente();
+		relatorioCliente = new RelatorioCliente();
+		relatorioFuncionario = new RelatorioFuncionario();
+		relatorioMercadoria = new RelatorioMercadoria();
 		
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
@@ -184,12 +187,27 @@ public class Caixa extends JFrame {
 		menuBar.add(mnNewMenu_2);
 		
 		JMenuItem mntmClientes = new JMenuItem("Clientes");
+		mntmClientes.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				relatorioCliente.setVisible(true);
+			}
+		});
 		mnNewMenu_2.add(mntmClientes);
 		
 		JMenuItem mntmFuncionarios = new JMenuItem("Funcionarios");
+		mntmFuncionarios.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				relatorioFuncionario.setVisible(true);
+			}
+		});
 		mnNewMenu_2.add(mntmFuncionarios);
 		
 		JMenuItem mntmMercadorias = new JMenuItem("Mercadorias");
+		mntmMercadorias.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				relatorioMercadoria.setVisible(true);
+			}
+		});
 		mnNewMenu_2.add(mntmMercadorias);
 		
 		JMenuItem mntmvendas = new JMenuItem("Vendas");
@@ -263,7 +281,7 @@ public class Caixa extends JFrame {
 				
 				totalVenda += totalItem;
 				totalFinal.setText(""+new DecimalFormat("0.##").format(totalVenda));
-		
+				
 				
 				limpar();
 			}
@@ -463,7 +481,6 @@ public class Caixa extends JFrame {
 		nomeCliente.setBounds(336, 11, 241, 20);
 		telaVendas.add(nomeCliente);
 		nomeCliente.setColumns(10);
-		
 		
 		
 		JLabel lblNewLabel_6 = new JLabel("Funcionario:");
