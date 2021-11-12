@@ -25,7 +25,7 @@ public class RelatorioFuncionario extends JFrame {
 	
 	public RelatorioFuncionario() {
 		setTitle("Relatorio Funcionarios");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 631, 504);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

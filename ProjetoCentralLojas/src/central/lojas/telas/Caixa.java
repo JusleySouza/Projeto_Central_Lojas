@@ -66,6 +66,7 @@ public class Caixa extends JFrame {
 	private RelatorioCliente relatorioCliente;
 	private RelatorioFuncionario relatorioFuncionario;
 	private RelatorioMercadoria relatorioMercadoria;
+	private RelatorioVendas relatorioVenda;
 	
 	Estoque estoque = new Estoque();
 	Mercadoria mercadoria = new Mercadoria();
@@ -110,6 +111,7 @@ public class Caixa extends JFrame {
 		relatorioCliente = new RelatorioCliente();
 		relatorioFuncionario = new RelatorioFuncionario();
 		relatorioMercadoria = new RelatorioMercadoria();
+		relatorioVenda = new RelatorioVendas();
 		
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
@@ -211,6 +213,11 @@ public class Caixa extends JFrame {
 		mnNewMenu_2.add(mntmMercadorias);
 		
 		JMenuItem mntmvendas = new JMenuItem("Vendas");
+		mntmvendas.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				relatorioVenda.setVisible(true);
+			}
+		});
 		mnNewMenu_2.add(mntmvendas);
 
 		contentPane = new JPanel();
