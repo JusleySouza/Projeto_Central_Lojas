@@ -45,7 +45,15 @@ public class FinalizarVenda extends JFrame {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(0, 39, 335, 38);
 		contentPane.add(lblNewLabel_1);
-		lblNewLabel_1.setText(""+vendaobj.getTotal());
+		
+		if(vendaobj.getTotal() > 100.00 && vendaobj.getTotal()<= 500.00) {
+			vendaobj.setTotal(vendaobj.getTotal() - (vendaobj.getTotal() * 0.05));
+		}
+		else if(vendaobj.getTotal() > 500.00) {
+			vendaobj.setTotal(vendaobj.getTotal() - (vendaobj.getTotal() * 0.10));
+		}
+		
+		lblNewLabel_1.setText(""+new DecimalFormat("0.##").format(vendaobj.getTotal()));
 		
 		JLabel lblNewLabel_2 = new JLabel("Forma de pagamento:");
 		lblNewLabel_2.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -71,6 +79,9 @@ public class FinalizarVenda extends JFrame {
 		JButton btnFinalizar = new JButton("Finalizar Venda");
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				
 				String troco = new DecimalFormat("0.##").format(Double.valueOf(ValorRecebido.getText()) - vendaobj.getTotal()).toString();
 				vendasfin.uptade(pagamento.getText(), vendaobj.getTotal(), vendaobj.getId());
 				JOptionPane.showMessageDialog(null,"Troco: " + troco,"Venda Finalizada",JOptionPane.INFORMATION_MESSAGE);

@@ -287,6 +287,8 @@ public class Caixa extends JFrame {
 				vendaobj.setTotal(vendaobj.getTotal() + totalItem);
 				
 				totalVenda += totalItem;
+
+				
 				totalFinal.setText(""+new DecimalFormat("0.##").format(totalVenda));
 				
 				
@@ -350,7 +352,7 @@ public class Caixa extends JFrame {
 				limpar.setEnabled(false);
 				fecharVenda.setEnabled(false);
 				int numRows = modelo.getRowCount();
-				for(int i = 0; i <= numRows; i++) {
+				for(int i = 0; i < numRows; i++) {
 					modelo.removeRow(i);
 				}
 			}
