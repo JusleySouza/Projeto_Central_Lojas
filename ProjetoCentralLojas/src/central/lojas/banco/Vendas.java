@@ -64,5 +64,16 @@ public VendasObj cadastrar(String idProfissional, String idCliente) {
 		return registros;
 
  }
+ 
+ public void deletar(int idVenda) {
+		
+		try {
+			sentenca = conect.createStatement();
+			registros = sentenca.executeUpdate("DELETE from venda_final WHERE id_venda_final='"+idVenda+"'");
+		}
+		catch(SQLException ex){
+			JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+		}	
+ }
 
 }

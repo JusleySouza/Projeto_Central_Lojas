@@ -351,9 +351,10 @@ public class Caixa extends JFrame {
 				AdicionarItem.setEnabled(false);
 				limpar.setEnabled(false);
 				fecharVenda.setEnabled(false);
+				totalFinal.setText("");
 				int numRows = modelo.getRowCount();
 				for(int i = 0; i < numRows; i++) {
-					modelo.removeRow(i);
+					modelo.removeRow(0);
 				}
 			}
 		});
@@ -382,15 +383,36 @@ public class Caixa extends JFrame {
 		quantidade.setBounds(21, 342, 130, 20);
 		telaVendas.add(quantidade);
 		
-		JButton btnSair = new JButton("Sair");
-		btnSair.addActionListener(new ActionListener() {
+		JButton btnCancelarVenda = new JButton("Cancelar");
+		btnCancelarVenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				limpar();
+				
+				nomeCliente.setText("");
+				nomeFuncionario.setText("");
+				nomeFuncionario.setEnabled(false);
+				validarFuncionario.setEnabled(false);
+				nomeConsulta.setEnabled(false);
+				buscarMercadoria.setEnabled(false);
+				nome.setEnabled(false);
+				preco.setEnabled(false);
+				quantidade.setEnabled(false);
+				totalFinal.setEnabled(false);
+				AdicionarItem.setEnabled(false);
+				limpar.setEnabled(false);
+				fecharVenda.setEnabled(false);
+				totalFinal.setText("");
+				int numRows = modelo.getRowCount();
+				for(int i = 0; i < numRows; i++) {
+					modelo.removeRow(0);
+				}
+				vendaUni.deletarTodasVendasUnitarias(vendaobj.getId());
+				vendasfin.deletar(vendaobj.getId());
 			}
 		});
-		btnSair.setFont(new Font("Dialog", Font.BOLD, 13));
-		btnSair.setBounds(572, 445, 110, 35);
-		telaVendas.add(btnSair);
+		btnCancelarVenda.setFont(new Font("Dialog", Font.BOLD, 13));
+		btnCancelarVenda.setBounds(572, 445, 110, 35);
+		telaVendas.add(btnCancelarVenda);
 		
 		modelo = new DefaultTableModel(); 
 		modelo.addColumn("Nome");
@@ -399,6 +421,32 @@ public class Caixa extends JFrame {
 		modelo.addColumn("Subtotal");
 		
 		tabela = new JTable(modelo);
+		tabela.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				
+				int posicao = tabela.getSelectedRow();
+				int quantidadeTabela = Integer.valueOf((String) modelo.getValueAt(posicao,1));
+				String nomeTabela = String.valueOf(modelo.getValueAt(posicao,0));
+				Double subTotal = Double.valueOf(modelo.getValueAt(posicao,3).toString().replaceAll(",", "."));
+				
+				mercadoria = estoque.consulta(nomeTabela);
+				mercadoria.setQuantidade(mercadoria.getQuantidade() + quantidadeTabela);
+				estoque.subtrairMercadoria(mercadoria);
+				
+				vendaobj.setTotal(vendaobj.getTotal() - subTotal);
+				totalVenda -= subTotal;				
+				totalFinal.setText(""+new DecimalFormat("0.##").format(totalVenda));
+				
+				limpar();
+				
+				modelo.removeRow(posicao);
+				
+				nome.setText(mercadoria.getNome());
+				preco.setText(""+mercadoria.getPreco());
+				quantidade.setText(""+quantidadeTabela);
+				vendaUni.deletar(vendaobj.getId(), mercadoria.getId(), quantidadeTabela);
+			}
+		});
 		JScrollPane scrollPane = new JScrollPane(tabela);
 		scrollPane.setBounds(240, 93, 446, 285);
 		telaVendas.add(scrollPane);
