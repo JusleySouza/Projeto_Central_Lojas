@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import central.lojas.banco.ClientesBanco;
+import central.lojas.dto.Usuario;
 
 public class ConfirmacaoExcluirCliente extends JFrame {
 
@@ -20,7 +21,7 @@ public class ConfirmacaoExcluirCliente extends JFrame {
 	private JPanel contentPane;
 
 	
-	public ConfirmacaoExcluirCliente(String nome) {
+	public ConfirmacaoExcluirCliente(Usuario usuarioObj, String nome) {
 		setTitle("Cliente");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

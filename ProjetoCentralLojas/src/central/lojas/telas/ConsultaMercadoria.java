@@ -1,6 +1,7 @@
 package central.lojas.telas;
 import central.lojas.banco.Estoque;
 import central.lojas.dto.Mercadoria;
+import central.lojas.dto.Usuario;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -19,20 +20,6 @@ public class ConsultaMercadoria extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-			
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ConsultaMercadoria frame = new ConsultaMercadoria();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	
 	public String nome;
 	public String lote;
@@ -50,7 +37,7 @@ public class ConsultaMercadoria extends JFrame {
 	Mercadoria mercadoria = new Mercadoria();
 
 	
-	public ConsultaMercadoria() {
+	public ConsultaMercadoria(Usuario usuarioObj) {
 		setTitle("Mercadorias");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 531, 464);
@@ -178,7 +165,7 @@ public class ConsultaMercadoria extends JFrame {
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConfirmacaoExcluirMercadoria confirmacao = new ConfirmacaoExcluirMercadoria(mercadoria.getId(), mercadoria.getNome());
+				ConfirmacaoExcluirMercadoria confirmacao = new ConfirmacaoExcluirMercadoria(usuarioObj, mercadoria.getId(), mercadoria.getNome());
 				confirmacao.setVisible(true);
 				confirmacao.toFront();
 				confirmacao.requestFocus();

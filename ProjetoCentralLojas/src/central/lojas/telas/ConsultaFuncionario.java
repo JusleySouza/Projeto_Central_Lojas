@@ -15,25 +15,13 @@ import javax.swing.border.EmptyBorder;
 
 import central.lojas.banco.Profissionais;
 import central.lojas.dto.Funcionario;
+import central.lojas.dto.Usuario;
 
 public class ConsultaFuncionario extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel novoCpf;
-			
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ConsultaFuncionario frame = new ConsultaFuncionario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
+
 	private JTextField nomeConsultaFuncionario;
 	private JTextField novoNomeFuncionario;
 	private JTextField novoTelefoneFuncionario;
@@ -53,7 +41,7 @@ public class ConsultaFuncionario extends JFrame {
 	ButtonGroup escolha = new ButtonGroup();
 
 	
-	public ConsultaFuncionario() {
+	public ConsultaFuncionario(Usuario usuarioObj) {
 		setTitle("Funcionarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 869, 494);
@@ -229,7 +217,7 @@ public class ConsultaFuncionario extends JFrame {
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			ConfirmacaoExcluirFuncionario confirmacaofunc = new ConfirmacaoExcluirFuncionario(funcionario.getNome());
+			ConfirmacaoExcluirFuncionario confirmacaofunc = new ConfirmacaoExcluirFuncionario(usuarioObj, funcionario.getNome());
 				confirmacaofunc.setVisible(true);
 				confirmacaofunc.toFront();
 				confirmacaofunc.requestFocus();

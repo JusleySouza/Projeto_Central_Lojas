@@ -38,6 +38,7 @@ import central.lojas.banco.Vendas;
 import central.lojas.dto.Cliente;
 import central.lojas.dto.Funcionario;
 import central.lojas.dto.Mercadoria;
+import central.lojas.dto.Usuario;
 import central.lojas.dto.VendaUnitObj;
 import central.lojas.dto.VendasObj;
 
@@ -53,7 +54,6 @@ public class Caixa extends JFrame {
 	private JTextField preco;
 	private JTextField quantidade;
 	private CadastroCliente cad;
-	private logincliente logcli;
 	private mercadoria additm;
 	private CadastroFuncionario cadx;
 	private ConsultaMercadoria editarExcluir;
@@ -85,33 +85,17 @@ public class Caixa extends JFrame {
 	VendasObj vendaobj = new VendasObj();
 	Vendas vendasfin = new Vendas();
 	
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Caixa frame = new Caixa();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	
-	public Caixa() throws IOException {
-		logcli = new logincliente();
-		cad = new CadastroCliente();
-		cadx = new CadastroFuncionario();
-		additm = new mercadoria();
-		editarExcluir = new ConsultaMercadoria();
-		consultafunc = new ConsultaFuncionario();
-		consultacli = new ConsultaCliente();
-		relatorioCliente = new RelatorioCliente();
-		relatorioFuncionario = new RelatorioFuncionario();
-		relatorioMercadoria = new RelatorioMercadoria();
-		relatorioVenda = new RelatorioVendas();
+	public Caixa(Usuario usuarioObj) throws IOException {
+		cad = new CadastroCliente(usuarioObj);
+		cadx = new CadastroFuncionario(usuarioObj);
+		additm = new mercadoria(usuarioObj);
+		editarExcluir = new ConsultaMercadoria(usuarioObj);
+		consultafunc = new ConsultaFuncionario(usuarioObj);
+		consultacli = new ConsultaCliente(usuarioObj);
+		relatorioCliente = new RelatorioCliente(usuarioObj);
+		relatorioFuncionario = new RelatorioFuncionario(usuarioObj);
+		relatorioMercadoria = new RelatorioMercadoria(usuarioObj);
+		relatorioVenda = new RelatorioVendas(usuarioObj);
 		
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
@@ -143,10 +127,14 @@ public class Caixa extends JFrame {
 			}
 		});
 		mnCliente.add(mntmEditarExcluirCliente);
+		JMenuItem mntmvendas = new JMenuItem("Vendas");
 		
 		JMenu mnFuncionario = new JMenu("Funcionarios");
 		menuBar.add(mnFuncionario);
-		
+		if(!usuarioObj.getCargo().equals("gerente")) {
+			mnFuncionario.setEnabled(false);
+			mntmvendas.setEnabled(false);
+		}
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Cadastramento Funcionario");
 		mntmNewMenuItem_2.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -212,7 +200,7 @@ public class Caixa extends JFrame {
 		});
 		mnNewMenu_2.add(mntmMercadorias);
 		
-		JMenuItem mntmvendas = new JMenuItem("Vendas");
+	
 		mntmvendas.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				relatorioVenda.setVisible(true);
@@ -334,7 +322,7 @@ public class Caixa extends JFrame {
 		fecharVenda.setFont(new Font("Serif", Font.BOLD, 14));
 		fecharVenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finaliza = new FinalizarVenda(vendaobj);
+				finaliza = new FinalizarVenda(usuarioObj, vendaobj);
 				finaliza.setVisible(true);
 				limpar();
 				

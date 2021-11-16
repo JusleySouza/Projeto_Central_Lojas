@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import central.lojas.banco.Vendas;
+import central.lojas.dto.Usuario;
 import central.lojas.dto.VendasObj;
 
 public class FinalizarVenda extends JFrame {
@@ -25,7 +26,7 @@ public class FinalizarVenda extends JFrame {
 	Vendas vendasfin = new Vendas();
 
 	
-	public FinalizarVenda(VendasObj vendaobj) {
+	public FinalizarVenda(Usuario usuarioObj, VendasObj vendaobj) {
 		setTitle("Finalizar Venda");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 351, 263);

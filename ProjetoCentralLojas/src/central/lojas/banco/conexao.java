@@ -87,11 +87,10 @@ static PreparedStatement stm;
 			
 			stm = conexao.prepareStatement("CREATE TABLE usuarios(\r\n"
 					+ "id_usuario int not null auto_increment,\r\n"
-					+ "funcionario_login varchar(15) not null,\r\n"
+					+ "cargo varchar(15) not null,\r\n"
 					+ "login varchar(20) not null,\r\n"
 					+ "senha varchar(15) not null,\r\n"
-					+ "primary key(id_usuario),\r\n"
-					+ "CONSTRAINT id_funcionario FOREIGN KEY (funcionario_login) REFERENCES profissionais (cpf)\r\n"
+					+ "primary key(id_usuario)\r\n"
 					+ ")\r\n"
 					+ "ENGINE = InnoDB\r\n"
 					+ "DEFAULT CHARACTER SET = utf8;");
@@ -124,6 +123,12 @@ static PreparedStatement stm;
 					+ ") \r\n"
 					+ "ENGINE = InnoDB\r\n"
 					+ "DEFAULT CHARACTER SET = utf8;");
+			stm.execute();
+			
+			stm = conexao.prepareStatement("INSERT INTO usuarios(login, senha, cargo) values('admin', 'admin', 'gerente')");
+			stm.execute();
+			
+			stm = conexao.prepareStatement("INSERT INTO usuarios(login, senha, cargo) values('vendas', 'vendas', 'vendedor')");
 			stm.execute();
 			
 			conexao.close();

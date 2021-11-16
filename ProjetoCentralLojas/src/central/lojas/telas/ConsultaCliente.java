@@ -15,24 +15,12 @@ import javax.swing.border.EmptyBorder;
 
 import central.lojas.banco.ClientesBanco;
 import central.lojas.dto.Cliente;
+import central.lojas.dto.Usuario;
 
 public class ConsultaCliente extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-			
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ConsultaCliente frame = new ConsultaCliente();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	private JTextField nomeConsultaCliente;
 	private JTextField novoNomeCliente;
@@ -51,7 +39,7 @@ public class ConsultaCliente extends JFrame {
 	
 	ButtonGroup escolha = new ButtonGroup();
 	
-	public ConsultaCliente() {
+	public ConsultaCliente(Usuario usuarioObj) {
 		setTitle("Clientes");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 869, 494);
@@ -222,7 +210,7 @@ public class ConsultaCliente extends JFrame {
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConfirmacaoExcluirCliente confirmacaoCli = new ConfirmacaoExcluirCliente(cliente.getNome());
+				ConfirmacaoExcluirCliente confirmacaoCli = new ConfirmacaoExcluirCliente(usuarioObj, cliente.getNome());
 				confirmacaoCli.setVisible(true);
 				confirmacaoCli.toFront();
 				confirmacaoCli.requestFocus();

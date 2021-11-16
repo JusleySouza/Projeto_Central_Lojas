@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import central.lojas.banco.Relatorios;
 import central.lojas.dto.Cliente;
+import central.lojas.dto.Usuario;
 
 
 public class RelatorioCliente extends JFrame {
@@ -24,7 +25,7 @@ public class RelatorioCliente extends JFrame {
 	private Relatorios relatorios = new Relatorios();
 
 
-	public RelatorioCliente() {
+	public RelatorioCliente(Usuario usuarioObj) {
 		
 		
 		setTitle("Relatorio Clientes");

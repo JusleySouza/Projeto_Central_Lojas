@@ -53,7 +53,7 @@ public VendasObj cadastrar(String idProfissional, String idCliente) {
 	 try {
 			sentenca = conect.createStatement();
 			registros = sentenca.executeUpdate("UPDATE venda_final SET data_compra='"+dataCompra+"', "
-					+ "forma_pagamento='"+pagamento+"', total_venda='"+total+"' Where id_venda_final='"+id+"'");
+					+ "forma_pagamento='"+pagamento+"', total_venda='"+total+"' WHERE id_venda_final='"+id+"'");
 		}
 		catch(SQLException ex)
 		{

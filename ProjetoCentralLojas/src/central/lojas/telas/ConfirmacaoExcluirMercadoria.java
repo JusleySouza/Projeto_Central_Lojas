@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import central.lojas.banco.Estoque;
+import central.lojas.dto.Usuario;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -21,7 +22,7 @@ public class ConfirmacaoExcluirMercadoria extends JFrame {
 	private JPanel contentPane;
 
 	
-	public ConfirmacaoExcluirMercadoria(int Id, String nomeProduto) {
+	public ConfirmacaoExcluirMercadoria(Usuario usuarioObj, int Id, String nomeProduto) {
 		setTitle("Mercadoria");
 		
 		

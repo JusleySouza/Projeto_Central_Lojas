@@ -11,12 +11,15 @@ import javax.swing.JOptionPane;
 import central.lojas.dto.Cliente;
 import central.lojas.dto.Funcionario;
 import central.lojas.dto.Mercadoria;
+import central.lojas.dto.RelatorioVendasObj;
 
 public class Relatorios {
 	
 	Connection conect;
 	Statement sentenca;
 	ResultSet procura;
+	ResultSet vendas;
+	ResultSet vendedor;
 	int registros;
 	
 	public Relatorios() {
@@ -100,7 +103,42 @@ public class Relatorios {
 		
 		return relatorioMercadorias;
 	}
+	
+	public ArrayList<RelatorioVendasObj> relatorioVendas() {
+		ArrayList<RelatorioVendasObj> relatorioVendas = new ArrayList<>();
+		
+		try {
+			sentenca = conect.createStatement();
+			procura = sentenca.executeQuery("SELECT * FROM venda_final");
+			
+			while(procura.next()) {
+				RelatorioVendasObj relatorio =  new RelatorioVendasObj();
+				
+				relatorio.setTotalVenda(procura.getDouble("total_venda"));
+				relatorio.setComissao(procura.getDouble("total_venda"));
+				
+				sentenca = conect.createStatement();
+				vendedor = sentenca.executeQuery("SELECT nome FROM profissionais WHERE cpf='"+procura.getString("profissional_id")+"'");
+				if(vendedor.next()) {
+					relatorio.setNomeFuncionario(vendedor.getString("nome"));
+				}
+				
+				sentenca = conect.createStatement();
+				vendas = sentenca.executeQuery("SELECT quantidade FROM venda_unitaria WHERE venda_id='"+procura.getInt("id_venda_final")+"'");
+				
+				while(vendas.next()) {
+					relatorio.setQuantidadePecas(relatorio.getQuantidadePecas() + vendas.getInt("quantidade"));
+				}
 
+				relatorioVendas.add(relatorio);
+			}
+		}
+		catch(SQLException ex){
+			JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+		}
+		
+		return relatorioVendas;
+	}
 	
 	
 	

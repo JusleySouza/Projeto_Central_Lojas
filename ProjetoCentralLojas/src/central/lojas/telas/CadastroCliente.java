@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import central.lojas.banco.ClientesBanco;
+import central.lojas.dto.Usuario;
+
 import java.awt.Color;
 
 public class CadastroCliente extends JFrame {
@@ -35,10 +37,7 @@ public class CadastroCliente extends JFrame {
 	RGCliente, emailCliente, bairroCliente, cidadeCliente, ruaCliente,sexo;
 	private int numero;
 	
-	public CadastroCliente() {
-		
-		
-		
+	public CadastroCliente(Usuario usuarioObj) {
 		setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
 		setTitle("Clientes");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

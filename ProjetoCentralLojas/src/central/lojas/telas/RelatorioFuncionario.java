@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import central.lojas.banco.Relatorios;
 import central.lojas.dto.Funcionario;
+import central.lojas.dto.Usuario;
 
 public class RelatorioFuncionario extends JFrame {
 
@@ -23,7 +24,7 @@ public class RelatorioFuncionario extends JFrame {
 	private Relatorios relatorios = new Relatorios();
 
 	
-	public RelatorioFuncionario() {
+	public RelatorioFuncionario(Usuario usuarioObj) {
 		setTitle("Relatorio Funcionarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 631, 504);

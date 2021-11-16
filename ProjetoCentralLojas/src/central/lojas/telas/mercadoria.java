@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import central.lojas.banco.Estoque;
+import central.lojas.dto.Usuario;
 
 public class mercadoria extends JFrame {
 
@@ -28,32 +29,13 @@ public class mercadoria extends JFrame {
 	private JTextField textField_preco;
 	private JTextField textField_tamanho;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					mercadoria frame = new mercadoria();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public String nome;
 	public String lote;
 	public int quantidade;
 	public double preco;
 	public String tamanho;
 	
-	public mercadoria() {
+	public mercadoria(Usuario usuarioObj) {
 		
 		
 		

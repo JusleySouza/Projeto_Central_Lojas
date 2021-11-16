@@ -1,5 +1,6 @@
 package central.lojas.telas;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -12,23 +13,25 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
+import central.lojas.banco.Usuarios;
+import central.lojas.dto.Usuario;
 	
 	public class login {
 	
-		public JFrame interFace;
+	public JFrame interFace;
 	private Caixa cax;
 	private JTextField txtTeste;
 	private JPasswordField passwordField;
-
-
+	private Usuario usuarioObj;
+	private Usuarios usuarios;
 	public login() throws IOException {
-		cax = new Caixa();
 		initialize();
 	}
 
@@ -64,10 +67,8 @@ import javax.swing.SwingConstants;
 		log1.setFont(new Font("Century Schoolbook", Font.BOLD, 13));
 		
 		txtTeste = new JTextField();
-		txtTeste.setText("teste"); //definindo o nome do usuario teste para execução "usuário teste padrão"
 		txtTeste.setBounds(152, 166, 196, 20);
 		panel_1.add(txtTeste);
-		txtTeste.setColumns(10);
 		
 		JLabel senha1 = new JLabel("Senha");
 		senha1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -78,9 +79,7 @@ import javax.swing.SwingConstants;
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(152, 230, 196, 20);
-		passwordField.setText("teste"); //definindo a senha do usuario teste para execução "usuário teste padrão"
-		panel_1.add(passwordField); //    
-		passwordField.setColumns(10);
+		panel_1.add(passwordField);
 		
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.setForeground(UIManager.getColor("textText"));
@@ -89,16 +88,27 @@ import javax.swing.SwingConstants;
 		panel_1.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String test = new String("foo");
-				String x = txtTeste.getText();
-				String password = String.valueOf(passwordField.getPassword());
-				if(x.equals("teste")) {
-				if(password.equals("teste")) {
-				cax.setVisible(true);
-				cax.toFront();
-				cax.requestFocus();
-				interFace.setVisible(false);
-				}}}
-			});
+				String login = txtTeste.getText();
+				String senha = String.valueOf(passwordField.getPassword());
+				
+				usuarioObj = new Usuario();
+				usuarios = new Usuarios();
+				usuarioObj = usuarios.consulta(login);
+				if(usuarioObj.getLogin().equals("") || usuarioObj.getLogin().equals(null) || !usuarioObj.getSenha().equals(senha)) {
+					JOptionPane.showMessageDialog(null,"Login ou senha invalidos","Erro",JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					try {
+						cax = new Caixa(usuarioObj);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					cax.setVisible(true);
+					cax.toFront();
+					cax.requestFocus();
+					interFace.setVisible(false);
+				}
+			}
+		});
 	}
 }

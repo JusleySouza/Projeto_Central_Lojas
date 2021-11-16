@@ -12,13 +12,14 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import central.lojas.banco.Profissionais;
+import central.lojas.dto.Usuario;
 
 public class ConfirmacaoExcluirFuncionario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public ConfirmacaoExcluirFuncionario(String nome) {
+	public ConfirmacaoExcluirFuncionario(Usuario usuarioObj, String nome) {
 		setTitle("Funcionario");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
