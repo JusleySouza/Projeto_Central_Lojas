@@ -96,6 +96,7 @@ public class Caixa extends JFrame {
 		relatorioFuncionario = new RelatorioFuncionario(usuarioObj);
 		relatorioMercadoria = new RelatorioMercadoria(usuarioObj);
 		relatorioVenda = new RelatorioVendas(usuarioObj);
+	
 		
 		setAutoRequestFocus(false);
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
@@ -324,6 +325,8 @@ public class Caixa extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				finaliza = new FinalizarVenda(usuarioObj, vendaobj);
 				finaliza.setVisible(true);
+				totalVenda=0.00;
+				
 				limpar();
 				
 				nomeCliente.setText("");
