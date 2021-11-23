@@ -1,36 +1,41 @@
 package central.lojas.testes;
 
-import static org.junit.Assert.*;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import central.lojas.banco.Usuarios;
 import central.lojas.dto.Usuario;
 
 public class TesteUsuario{
 
-	Usuarios usuarios = new Usuarios();
-	Usuario usuarioEsperado;
-	Usuario usuarioResultado;
-	
-	public static Usuario criarUsuario(String cargo, int id) {
-		Usuario usuario = new Usuario();
-		usuario.setId_usuario(id);
-		usuario.setCargo(cargo);
-		usuario.setLogin("admin");
-		usuario.setSenha("admin");
-		
-		return usuario;
-	}
-	
-	@Test
-	public void testeConsultarUsuarioAdmin() {
-		usuarioEsperado = new Usuario();
-		usuarioResultado = new Usuario();
-		usuarioEsperado =  criarUsuario("gerente", 1);
-		String login = "admin";
-		
-		usuarioResultado = usuarios.consulta(login);
-		assertEquals(usuarioEsperado, usuarioResultado);
-	}
+    private static Usuarios usuarios = new Usuarios();
+
+    @Test
+    public void testConsultarUsuario() {
+    	Usuario usuarioEsperado = new Usuario();
+        Usuario usuarioConsultado = usuarios.consulta("admin");
+
+        usuarioEsperado.setId_usuario(1);
+        usuarioEsperado.setCargo("gerente");
+        usuarioEsperado.setLogin("admin");
+        usuarioEsperado.setSenha("admin");
+        
+        assertEquals(usuarioConsultado.toString(), usuarioEsperado.toString());
+    }
+    
+    @Test
+    public void testConsultarUsuario2() {
+    	Usuario usuarioEsperado = new Usuario();
+        Usuario usuarioConsultado = usuarios.consulta("vendas");
+
+        usuarioEsperado.setId_usuario(2);
+        usuarioEsperado.setCargo("vendedor");
+        usuarioEsperado.setLogin("vendas");
+        usuarioEsperado.setSenha("vendas");
+        
+        assertEquals(usuarioConsultado.toString(), usuarioEsperado.toString());
+    }
 }

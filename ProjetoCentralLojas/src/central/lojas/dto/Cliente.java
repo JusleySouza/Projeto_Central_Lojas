@@ -82,6 +82,12 @@ public class Cliente {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", telefone=" + telefone + ", telefoneSecundario=" + telefoneSecundario
+				+ ", cpf=" + cpf + ", rg=" + rg + ", email=" + email + ", rua=" + rua + ", numero=" + numero
+				+ ", bairro=" + bairro + ", cidade=" + cidade + ", sexo=" + sexo + "]";
+	}
 	
 	
 }

@@ -70,7 +70,6 @@ public class ClientesBanco {
 	}
 	
 	public void atualizar(Cliente cliente) {
-		System.out.println(cliente.getNome());
 		try {
 			sentenca = conect.createStatement();
 			registros = sentenca.executeUpdate("UPDATE clientes SET nome='"+cliente.getNome()+"'," +

@@ -87,4 +87,12 @@ public class Funcionario {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+	@Override
+	public String toString() {
+		return "Funcionario [nome=" + nome + ", telefone=" + telefone + ", telefoneSecundario=" + telefoneSecundario
+				+ ", cpf=" + cpf + ", rg=" + rg + ", email=" + email + ", rua=" + rua + ", numero=" + numero
+				+ ", bairro=" + bairro + ", cidade=" + cidade + ", cargo=" + cargo + ", sexo=" + sexo + "]";
+	}
+	
+	
 }

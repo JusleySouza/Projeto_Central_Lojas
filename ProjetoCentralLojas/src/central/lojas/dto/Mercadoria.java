@@ -45,6 +45,13 @@ public class Mercadoria {
 	public void setTamanho(String tamanho) {
 		this.tamanho = tamanho;
 	}
+	
+	@Override
+	public String toString() {
+		return "Mercadoria [ nome=" + nome + ", lote=" + lote + ", quantidade=" + quantidade + ", preco="
+				+ preco + ", tamanho=" + tamanho + "]";
+	}
 
+	
 	
 }
