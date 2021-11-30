@@ -19,7 +19,7 @@ public class TesteMercadorias {
 	 @Test
 	    public void testCadastroMercadoria() {
 	    	int retornoEsperado=1;
-	        int retornoConsulta = estoque.cadastrar("Samba Canção","2356847942", 30, 12.50, "M");
+	        int retornoConsulta = estoque.cadastrar("Blusa Moletom","2356847942", 30, 65.90, "M");
 	        
 	        assertEquals(retornoEsperado,retornoConsulta);
 
@@ -29,12 +29,12 @@ public class TesteMercadorias {
 	 @Test
 	    public void testConsultamercadoria() {
 		 	Mercadoria mercadoriaEsperada = new Mercadoria();
-	        Mercadoria mercadoriaConsultada = estoque.consulta("Samba Canção");
+	        Mercadoria mercadoriaConsultada = estoque.consulta("Blusa Moletom");
 
-	        mercadoriaEsperada.setNome("Samba Canção");
+	        mercadoriaEsperada.setNome("Blusa Moletom");
 	        mercadoriaEsperada.setLote("2356847942");
 	        mercadoriaEsperada.setQuantidade(30);
-	        mercadoriaEsperada.setPreco(12.50);
+	        mercadoriaEsperada.setPreco(65.90);
 	        mercadoriaEsperada.setTamanho("M");
 			
 	        assertEquals(mercadoriaConsultada.toString(), mercadoriaEsperada.toString());
@@ -45,13 +45,13 @@ public class TesteMercadorias {
 	 @Test
 	 public void testAtualizaMercadoria() {
 		 	Mercadoria mercadoriaEsperada = new Mercadoria();
-		 	Mercadoria mercadoriaAtualizada = estoque.consulta("Samba Canção");
+		 	Mercadoria mercadoriaAtualizada = estoque.consulta("Blusa Moletom");
 		 	
 		 	mercadoriaEsperada.setId(mercadoriaAtualizada.getId());
-		    mercadoriaEsperada.setNome("Cueca Samba Canção");
+		    mercadoriaEsperada.setNome("Blusa de Moletom");
 	        mercadoriaEsperada.setLote("2356847942");
 	        mercadoriaEsperada.setQuantidade(30);
-	        mercadoriaEsperada.setPreco(12.50);
+	        mercadoriaEsperada.setPreco(65.90);
 	        mercadoriaEsperada.setTamanho("M");
 			
 			estoque.atualizar(mercadoriaEsperada);
@@ -65,7 +65,7 @@ public class TesteMercadorias {
 	 @Test
 	 public void testSubtrairMercadoria() {
 		 
-		 	Mercadoria mercadoriaEsperada = estoque.consulta("Cueca Samba Canção");
+		 	Mercadoria mercadoriaEsperada = estoque.consulta("Blusa de Moletom");
 		 	
 	        mercadoriaEsperada.setQuantidade(21);
 
@@ -79,7 +79,7 @@ public class TesteMercadorias {
 	 @Test
 	 public void testExcluirMercadoria() {
 		 	Mercadoria mercadoriaEsperada = new Mercadoria();
-		 	Mercadoria mercadoriaConsultada = estoque.consulta("Cueca Samba Canção");
+		 	Mercadoria mercadoriaConsultada = estoque.consulta("Blusa de Moletom");
 		 	
 	        estoque.excluir(mercadoriaConsultada.getId());
 	        

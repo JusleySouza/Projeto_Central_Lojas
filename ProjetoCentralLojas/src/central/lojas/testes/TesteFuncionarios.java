@@ -19,9 +19,9 @@ public class TesteFuncionarios {
 	 @Test
 	    public void testCadastroFuncionario() {
 	    	int retornoEsperado=1;
-	        int retornoConsulta = profissionais.cadastrar("Andrea Freitas","6359-4512", "3256-7845", "151.515.151-51",
-			"15.151.515-1", "andreafreitas@gmail.com", "Maria Rocha", 64 , "Pompéia",
-			"Rio Grande do Sul", "F", "gerente");
+	        int retornoConsulta = profissionais.cadastrar("Jorge Mariano da Silva","6359-6231", "3256-7461", "444.444.444-44",
+			"44.444.444-4", "jorgesilva@gmail.com", "Maria Bento", 804 , "São Benedito",
+			"Limeira", "M", "gerente");
 	        
 	        assertEquals(retornoEsperado,retornoConsulta);
 
@@ -31,19 +31,19 @@ public class TesteFuncionarios {
 	 @Test
 	    public void testConsultaFuncionario() {
 		 	Funcionario funcionarioEsperado = new Funcionario();
-	        Funcionario funcionarioConsultado = profissionais.consulta("Andrea Freitas");
+	        Funcionario funcionarioConsultado = profissionais.consulta("Jorge Mariano da Silva");
 
-	        funcionarioEsperado.setNome("Andrea Freitas");
-			funcionarioEsperado.setTelefone("6359-4512");
-			funcionarioEsperado.setTelefoneSecundario("3256-7845");
-			funcionarioEsperado.setCpf("151.515.151-51");
-			funcionarioEsperado.setRg("15.151.515-1");
-			funcionarioEsperado.setEmail("andreafreitas@gmail.com");
-			funcionarioEsperado.setRua("Maria Rocha");
-			funcionarioEsperado.setNumero(64);
-			funcionarioEsperado.setBairro("Pompéia");
-			funcionarioEsperado.setCidade("Rio Grande do Sul");
-			funcionarioEsperado.setSexo("F");
+	        funcionarioEsperado.setNome("Jorge Mariano da Silva");
+			funcionarioEsperado.setTelefone("6359-6231");
+			funcionarioEsperado.setTelefoneSecundario("3256-7461");
+			funcionarioEsperado.setCpf("444.444.444-44");
+			funcionarioEsperado.setRg("44.444.444-4");
+			funcionarioEsperado.setEmail("jorgesilva@gmail.com");
+			funcionarioEsperado.setRua("Maria Bento");
+			funcionarioEsperado.setNumero(804);
+			funcionarioEsperado.setBairro("São Benedito");
+			funcionarioEsperado.setCidade("Limeira");
+			funcionarioEsperado.setSexo("M");
 			funcionarioEsperado.setCargo("gerente");
 			
 	        assertEquals(funcionarioConsultado.toString(), funcionarioEsperado.toString());
@@ -55,17 +55,18 @@ public class TesteFuncionarios {
 	 public void testAtualizaFuncionario() {
 		 	Funcionario funcionarioEsperado = new Funcionario();
 
-	        funcionarioEsperado.setNome("Andrea Freitas");
-			funcionarioEsperado.setTelefone("6359-4512");
-			funcionarioEsperado.setTelefoneSecundario("3256-7845");
-			funcionarioEsperado.setCpf("151.515.151-51");
-			funcionarioEsperado.setRg("15.151.515-1");
-			funcionarioEsperado.setEmail("andreafreitas@gmail.com");
-			funcionarioEsperado.setRua("Maria Rocha");
-			funcionarioEsperado.setNumero(81);
-			funcionarioEsperado.setBairro("Pompéia");
-			funcionarioEsperado.setCidade("Rio Grande do Sul");
-			funcionarioEsperado.setSexo("F");
+
+	        funcionarioEsperado.setNome("Jorge Mariano da Silva");
+			funcionarioEsperado.setTelefone("6359-6231");
+			funcionarioEsperado.setTelefoneSecundario("3256-7461");
+			funcionarioEsperado.setCpf("444.444.444-44");
+			funcionarioEsperado.setRg("44.444.444-4");
+			funcionarioEsperado.setEmail("jorgesilva@gmail.com");
+			funcionarioEsperado.setRua("Maria Bento");
+			funcionarioEsperado.setNumero(804);
+			funcionarioEsperado.setBairro("São Benedito");
+			funcionarioEsperado.setCidade("Limeira");
+			funcionarioEsperado.setSexo("M");
 			funcionarioEsperado.setCargo("gerente");
 			
 			profissionais.atualizar(funcionarioEsperado);
@@ -79,7 +80,7 @@ public class TesteFuncionarios {
 	 @Test
 	 public void testExcluirFuncionario() {
 		 	Funcionario funcionarioEsperado = new Funcionario();
-	        profissionais.excluir("Andrea Freitas");
+	        profissionais.excluir("Jorge Mariano da Silva");
 	        
 	    	Funcionario funcionarioExcluido = profissionais.consulta(funcionarioEsperado.getNome());
 	     
