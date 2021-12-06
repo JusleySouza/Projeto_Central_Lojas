@@ -1,8 +1,7 @@
 package central.lojas.dto;
 
-import java.util.Date;
-
 public class VendaUnitObj {
+	
 	private int idUnitaria;
 	private int idVenda;
 	private int idMercadoria;
@@ -40,4 +39,9 @@ public class VendaUnitObj {
 		this.totalPedido = totalPedido;
 	}
 	
+	@Override
+	public String toString() {
+		return "VendaUnitObj [idUnitaria=" + idUnitaria + ", idVenda=" + idVenda + ", idMercadoria=" + idMercadoria
+				+ ", quantidade=" + quantidade + ", totalPedido=" + totalPedido + "]";
+	}
 }

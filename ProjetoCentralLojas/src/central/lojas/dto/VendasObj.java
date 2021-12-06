@@ -47,6 +47,12 @@ public class VendasObj {
 	public void setTotal(double total) {
 		this.total = total;
 	}
+	
+	@Override
+	public String toString() {
+		return "VendasObj [id=" + id + ", idProfissional=" + idProfissional + ", idCliente=" + idCliente + ", data="
+				+ data + ", pagamento=" + pagamento + ", total=" + total + "]";
+	}
 
-
+	
 }

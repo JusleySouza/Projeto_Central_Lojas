@@ -75,5 +75,28 @@ public VendasObj cadastrar(String idProfissional, String idCliente) {
 			JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
 		}	
  }
+ 
+ public VendasObj consultar (int id) {
+	 	VendasObj vendasObj = new VendasObj();
+	 	
+		try {
+			sentenca = conect.createStatement();
+			procura = sentenca.executeQuery("Select * from venda_final WHERE id_venda_final='"+id+"'");
+			if(procura.next()) {
+				vendasObj.setId(procura.getInt("id_venda_final"));
+				vendasObj.setIdCliente(procura.getString("cliente_id"));
+				vendasObj.setIdProfissional(procura.getString("profissional_id"));
+				vendasObj.setPagamento(procura.getString("forma_pagamento"));
+				vendasObj.setTotal(procura.getDouble("total_venda"));
+				vendasObj.setData(procura.getDate("data_compra"));
+			}
+			
+		}
+		catch(SQLException ex){
+			JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+		}
+		
+		return vendasObj;
+}
 
 }

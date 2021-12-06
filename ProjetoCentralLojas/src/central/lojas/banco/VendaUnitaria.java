@@ -7,7 +7,6 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-import central.lojas.dto.Mercadoria;
 import central.lojas.dto.VendaUnitObj;
 
 public class VendaUnitaria {
@@ -65,5 +64,25 @@ public class VendaUnitaria {
 		}
 		
 	}
+	
+	public VendaUnitObj consultar(VendaUnitObj vendaUnitObj) {
+		
+		try {
+			sentenca = conect.createStatement();
+			procura = sentenca.executeQuery("Select * from venda_unitaria WHERE "
+					+ "venda_id='"+vendaUnitObj.getIdVenda()+"' and mercadoria_id='"+vendaUnitObj.getIdMercadoria()+"' "
+					+ "and quantidade='"+vendaUnitObj.getQuantidade()+"' and total_pedido='"+vendaUnitObj.getTotalPedido()+"'");
+			
+			if(procura.next()) {
+				vendaUnitObj.setIdUnitaria(procura.getInt("id_venda_unitaria"));
+			}
+		}
+		catch(SQLException ex){
+			JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+		}
+		
+		return vendaUnitObj;
+	}
+
 	
 }
